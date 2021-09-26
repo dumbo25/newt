@@ -6,6 +6,7 @@ OSID offers a UI (in the form of a webpage) wrapper to dcfldd to assist in dupli
 
 - Migrate from Raspberry Pi 2 to Raspberry Pi 4
 - Eliminate need for a Raspberry Pi Touch Display
+- Create setup.py and add to repository
 
 
 ## Getting Started
