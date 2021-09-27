@@ -1,21 +1,22 @@
 # Open Source Image Duplicator - Python3
 
-OSID offers a UI (in the form of a webpage) wrapper to dcfldd to assist in duplicating SD cards from a Raspberry Pi.
+OSID provides a GUI to assist in cloning multiple MicroSD cards from one .img file.
 
-## Major Planned Changes 
+A Raspberry Pi connects to a 7 port powered USB HUB.
 
+This fork of OSID is designed for an 8GB Raspberry Pi 4 Raspberry Pi OS.
+
+## Planned Changes for this fork 
+
+Remove when complete or deemed not required:
 - Migrate from Raspberry Pi 2 to Raspberry Pi 4
 - Eliminate need for a Raspberry Pi Touch Display
 - Create install.sh to download files from github repository (for people who just want to use code as is)
 - migrate from raspbian to Raspberry Pi OS
+- if possible use one USB on RPi as source and 7 USBs on HUB as destination (I don't want the image on the RPi)
 
 
-## Getting Started
-
-These instructions will a copy of the project up and running on a Raspberry Pi.
-
-
-### Hardware
+## Required Hardware
 
 - Raspberry Pi 4
 - 64GB MicroSD Card
@@ -23,67 +24,26 @@ These instructions will a copy of the project up and running on a Raspberry Pi.
 - MicroSD card USB 3.0 readers (8 total)
 
 
-### Installation and Deployment
+## Installation and Deployment
 
-Open a terminal window and ssh into the raspberry pi.
+OSID can run on the Raspberry Pi OS Desktop or it can be run headless from another server on a home LAN.
 
-Download and run the install script
+If Raspberry Pi OS is properly setup and configured then install.sh installs all the required software and makes any needed directories. And it downloads the code from this repository.
+
+### Install Script
+
+Open a terminal window and ssh into a Raspberry Pi 4 running Raspberry PI OS. 
+
+Download and run the OSID install script
 
 ```
 wget https://raw.githubusercontent.com/dumbo25/osid-python3/master/install.sh
 bash install.sh
 ```
 
-## Manual Installation
+### Supplemental Explanation
 
-### Manual Install
-
-Instructions is for Raspbian since this is designed to be ran on a Raspberry Pi.
-
-Make sure you have python3 and pip3 and dcfldd.
-
-```
-sudo apt-get install python3 python3-pip dcfldd
-```
-
-and the CherryPy library.
-
-```
-sudo pip3 install cherrypy
-```
-
-Or
-
-```
-sudo pip3 install -r requirements.txt
-```
-
-To Do: Create an installation script to do it all.
-
-
-### Manual Deployment
-
-Navigate to the system folder and create the needed files from the sample files.
-
-```
-cd /path_to_folder/osid-python3/system
-```
-
-Inside there should be 3 files that we need to setup:
-
-* server.ini
-* run_app.sh
-* osid.desktop
-
-For now we'll just create those files from the samples.
-
-```
-mv server.ini.sample server.ini
-mv run_app.sh.sample run_app.sh
-mv osid.desktop.sample ~/Desktop/osid.desktop
-```
-
-Then proceed to modify those files to match the system paths for the items in those files.
+This section explains the script and what needs to be done. The changes can also be made manually.
 
 #### server.ini
 
@@ -107,12 +67,10 @@ Then proceed to modify those files to match the system paths for the items in th
 * Just make sure the path for the run_app.sh script is defined properly.
 * if you use OSID on headless Raspberry, this file is useless.
 
-### Usage
-
-#### Accepted image file
+### Accepted image file
 OSID will accept any image file ending with .img name. Other will silently be ignored.
 
-#### Auto discovery of available readers
+### Auto discovery of available readers
 When refreshing web page (or accessing it), OSID will scan available readers, and after some seconds, will show them on the menu. A sum of all readers is also shown.
 
 ## Built With
