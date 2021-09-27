@@ -6,39 +6,32 @@ OSID offers a UI (in the form of a webpage) wrapper to dcfldd to assist in dupli
 
 - Migrate from Raspberry Pi 2 to Raspberry Pi 4
 - Eliminate need for a Raspberry Pi Touch Display
-- Create setup.py and add to repository
+- Create install.sh to download files from github repository (for people who just want to use code as is)
+- migrate from raspbian to Raspberry Pi OS
 
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+These instructions will a copy of the project up and running on a Raspberry Pi.
 
 
 ### Hardware
 
-- Raspberry Pi 2
-- 32 GB SD Card
-- Official Raspberry Pi Touch Display
-- Monoprice powered USB hubs (7 ports) (4 total)
-- Monoprice SD card readers (26 total, rpi2 will stall on any more)
+- Raspberry Pi 4
+- 64GB MicroSD Card
+- Powered USB 3.0 hub (7 ports)
+- MicroSD card USB 3.0 readers (8 total)
 
-### Prerequisites
-
-What things you need to install the software and how to install them
-
-```
-dcfldd
-Python3
-Pip3
-cherrypy (through pip)
-```
 
 ### Installation and Deployment
 
-TODO: Just run the setup script
+Open a terminal window and ssh into the raspberry pi.
+
+Download and run the install script
 
 ```
-sudo python3 setup.py
+wget https://raw.githubusercontent.com/dumbo25/osid-python3/master/install.sh
+bash install.sh
 ```
 
 ## Manual Installation
