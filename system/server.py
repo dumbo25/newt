@@ -298,3 +298,4 @@ if __name__ == '__main__':
     cherrypy.quickstart(SDCardDupe(), '/', conf)
     
     logger.logPrint("INFO", "Exiting MicroSD Card Duplicator [server.py]")
+    closeMyLog(logger)
