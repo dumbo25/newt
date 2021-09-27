@@ -15,7 +15,16 @@ Remove when complete or deemed not required:
 - migrate from raspbian to Raspberry Pi OS
 - if possible use one USB on RPi as source and 7 USBs on HUB as destination (I don't want the image on the RPi)
 - might need to get missing graphics from other repos???
-- figure out how to get to website: python3 system/server.py, what is URL? Allow port 80 in ufw (allowed); do www files need to be moved to /var/www ??? do I have to have some microsd cards inserted? there are no .img files
+- figure out how to get to website: 
+	- python3 system/server.py, what is URL? 
+	- Allow port 80 in ufw (allowed); 
+	- do www files need to be moved to /var/www ??? 
+	- do I have to have some microsd cards inserted? there are no .img files
+- Add argparse
+- Add docstrings 
+- Expand help
+- Add mylog
+- Better messaging
 
 
 ## Required Hardware
@@ -43,10 +52,7 @@ wget https://raw.githubusercontent.com/dumbo25/osid-python3/master/install.sh
 bash install.sh
 ```
 
-### Supplemental Explanation
-
-This section explains the script and what needs to be done. The changes can also be made manually.
-
+### Configuration Files
 #### server.ini
 
 * ImagePath is the directory holding the .img files that can be used.
@@ -67,7 +73,7 @@ This section explains the script and what needs to be done. The changes can also
 * Headless Setup
 	* OSID can run headless on a networked Raspberry
 	* Comment out the chromuim line in run_app.sh
-	* Set local Raspbery Pi IP on server.ini
+	* Set Raspbery Pi IP on server.ini using ??? Host = ???
 
 #### osid.desktop
 
