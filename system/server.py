@@ -1,3 +1,44 @@
+#! /usr/bin/env python3
+"""
+This script runs a web server for cloning multiple MicroSD Cards.
+
+A Raspberry Pi 4 connects to USB 3.0 powered hub
+
+Modules or Tools that must be installed for script to work:
+    Run install_osid.sh
+
+References:
+    Original Author: Vadim Kantorov
+    Original Source: https://github.com/vadimkantorov/wemosetup
+
+My Guidelines for pythonic code:
+    https://sites.google.com/site/cartwrightraspberrypiprojects/home/footer/pythonic
+"""
+
+############################# <- 80 Characters -> ##############################
+#
+# This style of commenting is called a garden bed and it is frowned upon by
+# those who know python. But, I like it. I use a garden bed at the top to track
+# my to do list as I work on the code, and then mark the completed To Dos.
+#
+# Within the code, To Dos include a comment with ???, which makes it easy for
+# me to find
+#
+# Once the To Do list is more-or-less complete, I move the completed items into
+# comments, docstrings or help within the code. Next, I remove the completed
+# items.
+#
+# To Do List:
+#   z) check vadim.py into to git hub
+#
+# Do later or not at all:
+#
+# Won't Do:
+#
+# Completed:
+#
+############################# <- 80 Characters -> ##############################
+
 # Standard Libs
 import json
 import os
@@ -6,6 +47,12 @@ import configparser
 # Installed Libs
 import cherrypy
 
+# My Modules (from github)
+# pylint reports; C0413: Import "from mylog import MyLog" should be placed at
+# the top of the module. However, I am not sure how to fix this issue.
+# sys.path.append is required for me to import my module
+sys.path.append("..")
+from mylog import MyLog
 
 # Todo: too many config_parse blocks, create a function to easily call it
 
@@ -223,7 +270,7 @@ class SDCardDupe(object):
 if __name__ == '__main__':
 
     # get host configs from server.ini
-    # note: is there a way to put the config into conf and pull from api functions
+    # note: is there a way to put the config into conf and pull from api functions - ??? not sure what this means ???
     config_parse = configparser.ConfigParser()
     config_parse.sections()
     config_parse.read( os.path.dirname(os.path.realpath(__file__)) + '/server.ini' )
