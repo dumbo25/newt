@@ -14,6 +14,7 @@ Remove when complete or deemed not required:
 - Create install.sh to download files from github repository (for people who just want to use code as is)
 - migrate from raspbian to Raspberry Pi OS
 - if possible use one USB on RPi as source and 7 USBs on HUB as destination (I don't want the image on the RPi)
+- might need to get missing graphics from other repos???
 
 
 ## Required Hardware
