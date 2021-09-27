@@ -1,4 +1,4 @@
-# Open Source Image Duplicator - Python3
+# Open Source Image Duplicator
 
 OSID provides a GUI to assist in cloning multiple MicroSD cards from one .img file.
 
