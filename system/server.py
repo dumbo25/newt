@@ -269,7 +269,13 @@ class SDCardDupe(object):
 
 
 if __name__ == '__main__':
+    logger = MyLog()
+    logger.setLevel("INFO")
+    logger.setOutput("CONSOLE")
+    logger.openOutput()
 
+    logger.logPrint("INFO", "Starting Duplicator server")
+    
     # get host configs from server.ini
     # note: is there a way to put the config into conf and pull from api functions - ??? not sure what this means ???
     config_parse = configparser.ConfigParser()
