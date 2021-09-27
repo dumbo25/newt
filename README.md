@@ -4,32 +4,12 @@ OSID provides a GUI to assist in cloning multiple MicroSD cards from one .img fi
 
 A Raspberry Pi connects to a 7 port powered USB HUB.
 
-This fork of OSID is designed for an 8GB Raspberry Pi 4 Raspberry Pi OS.
-
-## Planned Changes for this fork 
-
-Remove when complete or deemed not required:
-- Migrate from Raspberry Pi 2 to Raspberry Pi 4
-- Eliminate need for a Raspberry Pi Touch Display
-- Create install.sh to download files from github repository (for people who just want to use code as is)
-- migrate from raspbian to Raspberry Pi OS
-- if possible use one USB on RPi as source and 7 USBs on HUB as destination (I don't want the image on the RPi)
-- might need to get missing graphics from other repos???
-- figure out how to get to website: 
-	- python3 system/server.py, what is URL? 
-	- Allow port 80 in ufw (allowed); 
-	- do www files need to be moved to /var/www ??? 
-	- do I have to have some microsd cards inserted? there are no .img files
-- Add argparse
-- Add docstrings 
-- Expand help
-- Add mylog
-- Better messaging
+This fork of OSID is designed for an 8GB Raspberry Pi 4 running Raspberry Pi OS.
 
 
 ## Required Hardware
 
-- Raspberry Pi 4
+- 8GB Raspberry Pi 4
 - 64GB MicroSD Card
 - Powered USB 3.0 hub (7 ports)
 - MicroSD card USB 3.0 readers (8 total)
