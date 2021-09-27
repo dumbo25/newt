@@ -1,5 +1,5 @@
 [DuplicatorSettings]
-ImagePath = /etc/osid/imgroot
+ImagePath = /home/pi/osid/images
 Host = 127.0.0.1
 SocketPort = 80
 Logs = /home/pi/osid/log
