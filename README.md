@@ -58,21 +58,26 @@ This section explains the script and what needs to be done. The changes can also
 
 #### run_app.sh
 
-* Run app will cd into the system folder, so define the installation path.
-* It will then open up chromium-browser and navigate to the hostname and port.
-	* So define the url that the browser will use to connect to the main page.
+* run_app.sh executes from the system folder, so define it correctly
+* Desktop Setup:
+	* run_app.sh opens a chromium-browser and navigates to the hostname and port
+	* Define the url a browser will use to connect to the main page
 
-* Alternatively, you can decide to run OSID headless on a networked Raspberry. You can safely uncomment the chromuim line in run_app.sh. Don't forget to set local Raspbery Pi IP on server.ini
+* Headless Setup
+	* OSID can run headless on a networked Raspberry
+	* Comment out the chromuim line in run_app.sh
+	* Set local Raspbery Pi IP on server.ini
 
 #### osid.desktop
-* Just make sure the path for the run_app.sh script is defined properly.
-* if you use OSID on headless Raspberry, this file is useless.
+
+* The path for the run_app.sh script should be correct.
+* if you use OSID on headless RPi, this file is useless.
 
 ### Accepted image file
-OSID will accept any image file ending with .img name. Other will silently be ignored.
+OSID will accept any image file ending with .img name. Other extensions will silently be ignored.
 
 ### Auto discovery of available readers
-When refreshing web page (or accessing it), OSID will scan available readers, and after some seconds, will show them on the menu. A sum of all readers is also shown.
+When refreshing the OSID web page (or accessing it), OSID will scan available readers, and after some seconds, will show them on the menu. A sum of all readers is also shown.
 
 ## Built With
 
