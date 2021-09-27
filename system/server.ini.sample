@@ -1,6 +1,6 @@
 [DuplicatorSettings]
 ImagePath = /etc/osid/imgroot
-Host = localhost
+Host = 127.0.0.1
 SocketPort = 80
 Logs = /home/pi/osid/log
 SkeletonLocation = /home/pi/osid/www/skeleton.min.css
