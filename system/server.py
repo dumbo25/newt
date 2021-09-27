@@ -274,7 +274,7 @@ if __name__ == '__main__':
     logger.setOutput("CONSOLE")
     logger.openOutput()
 
-    logger.logPrint("INFO", "Starting Duplicator server")
+    logger.logPrint("INFO", "Starting McrioSD Card Duplicator [server.py]")
     
     # get host configs from server.ini
     # note: is there a way to put the config into conf and pull from api functions - ??? not sure what this means ???
@@ -296,3 +296,5 @@ if __name__ == '__main__':
     cherrypy.process.plugins.Daemonizer(cherrypy.engine).subscribe()
 
     cherrypy.quickstart(SDCardDupe(), '/', conf)
+    
+    logger.logPrint("INFO", "Exiting MicroSD Card Duplicator [server.py]")
