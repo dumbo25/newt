@@ -4,4 +4,7 @@ sudo /usr/bin/python3 server.py
 
 # Allow Cherrypy to boot up
 sleep 5
-chromium-browser --app=http://hostname:port
+# run headless ???
+# ??? what needs to be done ???
+# run on Raspberry Pi Desktop - don't want to remove all the unusued stuff in Raspberry Pi setup insturctions ???
+# chromium-browser --app=http://hostname:port
