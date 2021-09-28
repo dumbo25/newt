@@ -74,7 +74,7 @@ When refreshing the OSID web page (or accessing it), OSID will scan available re
 ## Built With
 
 * [aaronnguyen/OSID] (https://github.com/aaronnguyen/osid-python3) - python3 version of Base Project
-* [nettings/tarot] (https://github.com/nettings/tarot) - very cool improvements
+* [nettings/tarot] (https://github.com/nettings/tarot) - very cool improvements, changed from python to php and js
 * [Skeleton-Framework](https://github.com/skeleton-framework/skeleton-framework) - CSS framework used to structure Web UI
 * [CherryPy](http://docs.cherrypy.org/en/latest/) - API Library for Python used to manage all actions
 * [rockandscissor/OSID](https://github.com/rockandscissor/osid) - Base Project originally written in PHP and Bash
