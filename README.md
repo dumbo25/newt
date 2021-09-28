@@ -14,12 +14,17 @@ This fork of OSID is designed for an 8GB Raspberry Pi 4 running Raspberry Pi OS.
 - Powered USB 3.0 hub (7 ports)
 - MicroSD card USB 3.0 readers (8 total)
 
+## Planned Changes
+
+- remove sample files, simplifies things
+- add conf files
+- simple directions
 
 ## Installation and Deployment
 
 OSID can run on the Raspberry Pi OS Desktop or it can be run headless from another server on a home LAN.
 
-If Raspberry Pi OS is properly setup and configured then install.sh installs all the required software and makes any needed directories. And it downloads the code from this repository.
+If Raspberry Pi OS is properly setup and configured then install_osid.sh installs all the required software and makes any needed directories. And it downloads the code from this repository.
 
 ### Install Script
 
@@ -28,8 +33,8 @@ Open a terminal window and ssh into a Raspberry Pi 4 running Raspberry PI OS.
 Download and run the OSID install script
 
 ```
-wget https://raw.githubusercontent.com/dumbo25/osid-python3/master/install.sh
-bash install.sh
+wget https://raw.githubusercontent.com/dumbo25/osid-python3/master/install_osid.sh
+bash install_osid.sh
 ```
 
 ### Configuration Files
@@ -68,6 +73,7 @@ When refreshing the OSID web page (or accessing it), OSID will scan available re
 
 ## Built With
 
+* [aaronnguyen/OSID] (https://github.com/aaronnguyen/osid-python3) - python3 version of Base Project
 * [Skeleton-Framework](https://github.com/skeleton-framework/skeleton-framework) - CSS framework used to structure Web UI
 * [CherryPy](http://docs.cherrypy.org/en/latest/) - API Library for Python used to manage all actions
 * [rockandscissor/OSID](https://github.com/rockandscissor/osid) - Base Project originally written in PHP and Bash
