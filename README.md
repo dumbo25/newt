@@ -20,15 +20,17 @@ These directions assume a Raspberry Pi is properly setup and running Raspberry P
 
 install.sh installs all the required software, makes any needed directories and sets any needed permissions. 
 
-Step 1. Open a terminal window
-Step 2. From the terminal window, ssh into a Raspberry Pi 4 running Raspberry PI OS. 
-Step 3. Download and run the OSID install script
+* Step 1. Open a terminal window
+* Step 2. From the terminal window, ssh into a Raspberry Pi 4 running Raspberry PI OS. 
+* Step 3. Download and run the OSID install script
 
 ```
 wget https://raw.githubusercontent.com/dumbo25/osid-python3/master/install.sh
 wget https://raw.githubusercontent.com/dumbo25/osid-python3/master/install.cfg
 sudo bash install.sh
 ```
+* Step 4. Open a browser and enter the URL suggested by install.sh
+
 
 ## Configuration Files
 ### install.cfg
