@@ -71,17 +71,23 @@ OSID will accept any image file ending with .img name. Other extensions will sil
 ### Auto discovery of available readers
 When refreshing the OSID web page (or accessing it), OSID will scan available readers, and after some seconds, will show them on the menu. A sum of all readers is also shown.
 
-## Built With
+## Built From
 
-* [aaronnguyen/OSID] (https://github.com/aaronnguyen/osid-python3) - python3 version of Base Project
-* [nettings/tarot] (https://github.com/nettings/tarot) - very cool improvements, changed from python to php and js
+* [aaronnguyen/OSID](https://github.com/aaronnguyen/osid-python3) - python3 version of Base Project
 * [Skeleton-Framework](https://github.com/skeleton-framework/skeleton-framework) - CSS framework used to structure Web UI
-* [CherryPy](http://docs.cherrypy.org/en/latest/) - API Library for Python used to manage all actions
 * [rockandscissor/OSID](https://github.com/rockandscissor/osid) - Base Project originally written in PHP and Bash
 
-## Versioning
+## References
+* [nettings/tarot](https://github.com/nettings/tarot) - very cool improvements, changed from python to php and js
+* [CherryPy](http://docs.cherrypy.org/en/latest/) - API Library for Python used to manage all actions
+* [Raspberry Tips](https://raspberrytips.com/create-image-sd-card/) How to Create an Image of a Raspberry Pi SD Card?
+* [RaspberryPi.org](https://www.raspberrypi.org/documentation/computers/getting-started.html#using-raspberry-pi-imager) Using Raspberry Pi Imager
+* [RaspberryPi/github](https://github.com/raspberrypi/rpi-imager) Github repository for Raspberry Pi Imager
+* [billw2/rpi-clone](https://github.com/billw2/rpi-clone) RPi clone
+* [Igoro Oseledko](https://www.igoroseledko.com/backup-options-for-raspberry-pi/) Backup Options for Raspberry Pi
 
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags).
+## Versioning
+[SemVer](http://semver.org/) is used for version numbers. For the versions available, see the [tags on this repository](https://github.com/your/project/tags).
 
 ## Authors
 
