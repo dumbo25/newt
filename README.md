@@ -13,10 +13,6 @@ This fork of OSID is designed for an 8GB Raspberry Pi 4 running Raspberry Pi OS.
 - Powered USB 3.0 hub (10 ports)
 - MicroSD card USB 3.0 readers (10 total)
 
-## Significant Changes from Aaron's OSID
-- added generic install.sh with duplicator specific install.cfg
-- simplify directions
-
 ## Installation 
 OSID can run on the Raspberry Pi OS Desktop or it can be run headless from another server on a home LAN.
 
@@ -70,13 +66,6 @@ OSID will accept any image file ending with .img name. Other extensions will sil
 When refreshing the OSID web page (or accessing it), OSID will scan available readers, and after some seconds, will show them on the menu. A sum of all readers is also shown.
 
 
-## References
-* [nettings/tarot](https://github.com/nettings/tarot) - very cool improvements, changed from python to php and js
-* [Raspberry Tips](https://raspberrytips.com/create-image-sd-card/) How to Create an Image of a Raspberry Pi SD Card?
-* [RaspberryPi.org](https://www.raspberrypi.org/documentation/computers/getting-started.html#using-raspberry-pi-imager) Using Raspberry Pi Imager
-* [RaspberryPi/github](https://github.com/raspberrypi/rpi-imager) Github repository for Raspberry Pi Imager
-* [billw2/rpi-clone](https://github.com/billw2/rpi-clone) RPi clone
-* [Igoro Oseledko](https://www.igoroseledko.com/backup-options-for-raspberry-pi/) Backup Options for Raspberry Pi
 
 
 ## Original Authors
@@ -84,9 +73,23 @@ When refreshing the OSID web page (or accessing it), OSID will scan available re
 * [rockandscissor/OSID](https://github.com/rockandscissor/osid) - Base Project originally written in PHP and Bash
 
 
-## Dependencies
+### Significant Changes from Aaron's OSID
+- added generic install.sh with duplicator specific install.cfg
+- simplify directions
+
+
+### Dependencies
 * [CherryPy](http://docs.cherrypy.org/en/latest/) - API Library for Python used to manage all actions
 * [Skeleton-Framework](https://github.com/skeleton-framework/skeleton-framework) - CSS framework used to structure Web UI
+
+
+### References
+* [nettings/tarot](https://github.com/nettings/tarot) - very cool improvements, changed from python to php and js
+* [Raspberry Tips](https://raspberrytips.com/create-image-sd-card/) How to Create an Image of a Raspberry Pi SD Card?
+* [RaspberryPi.org](https://www.raspberrypi.org/documentation/computers/getting-started.html#using-raspberry-pi-imager) Using Raspberry Pi Imager
+* [RaspberryPi/github](https://github.com/raspberrypi/rpi-imager) Github repository for Raspberry Pi Imager
+* [billw2/rpi-clone](https://github.com/billw2/rpi-clone) RPi clone
+* [Igoro Oseledko](https://www.igoroseledko.com/backup-options-for-raspberry-pi/) Backup Options for Raspberry Pi
 
 
 ## Versioning
