@@ -78,6 +78,7 @@ When refreshing the OSID web page (or accessing it), OSID will scan available re
 ### Significant Changes from Aaron's OSID
 - added generic install.sh with duplicator specific install.cfg
 - simplify directions
+- migrate from CherryPy to flask or python https
 
 
 ### Dependencies
