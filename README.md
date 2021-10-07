@@ -1,6 +1,6 @@
-# Open Source Image Duplicator (OSID)
+# Newt (Open Source Micro SD Card Image Duplicator)
 
-OSID provides a GUI to assist in cloning multiple MicroSD cards from one .img file.
+Newt provides a GUI to assist in cloning multiple MicroSD cards from one .img file.
 
 A Raspberry Pi connects to a powered USB 3.0 HUB.
 
@@ -14,7 +14,7 @@ This fork of OSID is designed for an 8GB Raspberry Pi 4 running Raspberry Pi OS.
 - MicroSD card USB 3.0 readers (10 total)
 
 ## Installation 
-OSID can run on the Raspberry Pi OS Desktop or it can be run headless from another server on a home LAN.
+Newt can run on the Raspberry Pi OS Desktop or it can be run headless from another server on a home LAN.
 
 These directions assume a Raspberry Pi is properly setup and running Raspberry Pi OS and the goal is to run the MicroSD Card duplicator as a networked device on a home LAN.
 
@@ -22,11 +22,11 @@ install.sh installs all the required software, makes any needed directories and 
 
 * Step 1. Open a terminal window
 * Step 2. From the terminal window, ssh into a Raspberry Pi 4 running Raspberry PI OS. 
-* Step 3. Download and run the OSID install script
+* Step 3. Download and run newt's install.sh script
 
 ```
-wget https://raw.githubusercontent.com/dumbo25/osid-python3/master/install.sh
-wget https://raw.githubusercontent.com/dumbo25/osid-python3/master/install.cfg
+wget https://raw.githubusercontent.com/dumbo25/newt/master/install.sh
+wget https://raw.githubusercontent.com/dumbo25/newt/master/install.cfg
 sudo bash install.sh
 ```
 * Step 4. Open a browser and enter the URL suggested by install.sh
@@ -52,27 +52,25 @@ sudo bash install.sh
 	* Define the url a browser will use to connect to the main page
 
 * Headless Setup
-	* OSID can run headless on a networked Raspberry
+	* Newt can run headless on a networked Raspberry
 	* Comment out the chromuim line in run_app.sh
 	* Set Raspbery Pi IP on server.ini using ??? Host = ???
 
-### osid.desktop
+### newt.desktop
 * The path for the run_app.sh script should be correct.
-* if you use OSID on headless RPi, this file is useless.
+* if you use newt on headless RPi, this file is useless.
 
 ## Usage
 ### Accepted image file
-OSID will accept any image file ending with .img name. Other extensions will silently be ignored.
+Newt will accept any image file ending with .img name. Other extensions will silently be ignored.
 
 ### Auto discovery of available readers
-When refreshing the OSID web page (or accessing it), OSID will scan available readers, and after some seconds, will show them on the menu. A sum of all readers is also shown.
-
-
+When refreshing the newt web page (or accessing it), newt will scan for available readers, and after some seconds, will show them on the menu. A sum of all readers is also shown.
 
 
 ## Original Authors
-* [aaronnguyen/OSID](https://github.com/aaronnguyen/osid-python3) - python3 version of Base Project
-* [rockandscissor/OSID](https://github.com/rockandscissor/osid) - Base Project originally written in PHP and Bash
+* [aaronnguyen/OSID](https://github.com/aaronnguyen/osid-python3) - python3 version of OSID Project
+* [rockandscissor/OSID](https://github.com/rockandscissor/osid) - Base OSID Project originally written in PHP and Bash
 
 
 ### Significant Changes from Aaron's OSID
@@ -93,7 +91,7 @@ When refreshing the OSID web page (or accessing it), OSID will scan available re
 * [RaspberryPi/github](https://github.com/raspberrypi/rpi-imager) Github repository for Raspberry Pi Imager
 * [billw2/rpi-clone](https://github.com/billw2/rpi-clone) RPi clone
 * [Igoro Oseledko](https://www.igoroseledko.com/backup-options-for-raspberry-pi/) Backup Options for Raspberry Pi
-
+* [tyrower/diy-duplicator](https://github.com/tyrower/diy-duplicator) Micro SD duplicator using mdadm (RAID disk utilities) written in bash
 
 ## Versioning
 [SemVer](http://semver.org/) is used for version numbers. For the versions available, see the [tags on this repository](https://github.com/your/project/tags).
