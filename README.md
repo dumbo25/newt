@@ -47,19 +47,10 @@ sudo bash install.sh
 	* You can also pull a fresh copy of the [Skeleton-Framework](https://github.com/skeleton-framework/skeleton-framework) and define the location.
 
 ### run_app.sh
-* run_app.sh executes from the system folder, so define it correctly
-* Desktop Setup:
-	* run_app.sh opens a chromium-browser and navigates to the hostname and port
-	* Define the url a browser will use to connect to the main page
-
 * Headless Setup
-	* Newt can run headless on a networked Raspberry
+	* Newt runs headless on a networked Raspberry
 	* Comment out the chromuim line in run_app.sh
 	* Set Raspbery Pi IP on server.ini using ??? Host = ???
-
-### newt.desktop
-* The path for the run_app.sh script should be correct.
-* if you use newt on headless RPi, this file is useless.
 
 ## Usage
 ### Accepted image file
