@@ -5,7 +5,7 @@ This script runs a web server for cloning multiple MicroSD Cards.
 A Raspberry Pi 4 connects to USB 3.0 powered hub
 
 Modules or Tools that must be installed for script to work:
-    Run install_osid.sh
+    Run install.sh
 
 References:
     Original Author: Vadim Kantorov
@@ -29,23 +29,49 @@ My Guidelines for pythonic code:
 # items.
 #
 # To Do List:
-#   z) check vadim.py into to git hub
+#   a) Migrate from Raspberry Pi 2 to Raspberry Pi 4
+#   b) Eliminate need for a Raspberry Pi Touch Display
+#   c) Create install.sh to download files from github repository (for people who just want to use code as is)
+#   d) migrate from raspbian to Raspberry Pi OS
+#   e) if possible use one USB on RPi as source and 7 USBs on HUB as destination (I don't want the image on the RPi)
+#   f) might need to get missing graphics from other repos???
+#   g) figure out how to get to website:
+#      g.1) python3 system/server.py, what is URL?
+#      g.2) Allow port 80 in ufw (allowed);
+#      g.3) do www files need to be moved to /var/www ???
+#      g.4) do I have to have some microsd cards inserted? there are no .img files
+#   h) Add argparse
+#   i) Add docstrings
+#   j) Expand help
+#   k) Better messaging
+#   l) migrate from cherrypy to flask or to a python-only implementation:
+#      https://pythonbasics.org/webserver/
+#      https://discourse.world/h/2019/10/18/5-Ways-to-Make-a-Python-Server-on-a-Raspberry-Pi-Part-1
+#      redmoon: https://github.com/dumbo25/flaskMenu
+#   m) need a systemd service to keep the server running
+#   p) figure out how it works using USBs on raspberry pi; create fake *.img file; or  get RPiOS lite
+#
+#   x) run pydoc
+#   y) run pylint
+#   z) upload final code to github
 #
 # Do later or not at all:
 #
 # Won't Do:
 #
 # Completed:
+#   - Added mylog
 #
 ############################# <- 80 Characters -> ##############################
 
-# Standard Libs
+# Built-in Python3 Modules
 import json
 import os
 import sys
 import subprocess
 import configparser
-# Installed Libs
+
+# Modules that must be installed (pip3)
 import cherrypy
 
 # My Modules (from github)
@@ -55,12 +81,16 @@ import cherrypy
 sys.path.append("..")
 from mylog import MyLog
 
-# Todo: too many config_parse blocks, create a function to easily call it
+# ??? old to do: too many config_parse blocks, create a function to easily call it
 
+# class SDCardDupe(object):
 class SDCardDupe(object):
+    global logger
+
     @cherrypy.expose
     def index(self):
 
+        logger.printLog("INFO", "index")
         # get host configs from server.ini
         config_parse = configparser.ConfigParser()
         config_parse.sections()
@@ -82,6 +112,8 @@ class SDCardDupe(object):
     @cherrypy.expose
     def monitor(self):
 
+        logger.printLog("INFO", "monitor")
+
         # get host configs from server.ini
         config_parse = configparser.ConfigParser()
         config_parse.sections()
@@ -100,6 +132,8 @@ class SDCardDupe(object):
 
     @cherrypy.expose
     def posted(self,img_file,devices):
+
+        logger.printLog("INFO", "posted")
 
         # get all mounted items on the rpi
         mounted_list = []
@@ -176,6 +210,9 @@ class SDCardDupe(object):
     @cherrypy.expose
     @cherrypy.tools.json_out()
     def getStatus(self):
+
+        logger.printLog("INFO", "getStatus")
+
         # get host configs from server.ini
         config_parse = configparser.ConfigParser()
         config_parse.sections()
@@ -208,6 +245,8 @@ class SDCardDupe(object):
     @cherrypy.tools.json_out()
     def getDevices(self):
 
+        logger.printLog("INFO", "getDevices")
+
         list_devices = []
 
         # Refresh partition to discover all available medias
@@ -239,6 +278,8 @@ class SDCardDupe(object):
     @cherrypy.tools.json_out()
     def getImages(self):
 
+        logger.printLog("INFO", "getImages")
+
         list_images = []
 
         # get the path of images from the ini file
@@ -266,7 +307,68 @@ class SDCardDupe(object):
         cherrypy.response.headers['Content-Type'] = 'application/json'
         return json.dumps(list_images)
 
+def main(logger):
+    # Original script failed, with -h or --help or no options
+    # Optional arguments, like -h or --help don't work where options have Required = True set
+    # help text should be limited to 80characters
+    if ("--help" in sys.argv) or ("--h" in sys.argv) or ("-h" in sys.argv) or (len(sys.argv) == 1):
+        logger.logPrint("INFO", '''
+\033[1mNAME\033[0m
+     duplicator -- duplicator is utility for cloning MicroSD cards used in
+         Raspberry Pis and other devices. The tool takes one image and copies
+         it to 7 other MicroSD cards.
 
+\033[1mSYNOPSIS\033[0m
+     sudo python3 server.py [commands] [-options]
+
+\033[1mDESCRIPTION\033[0m
+     Duplicator adds a networked based GUI to disk copying utilities.
+
+     The following WeMo commands are available. All options listed for a
+     command are required:
+
+??? commands need to be defined
+         add --ip <ip> --port <p>
+             Add a device to a WeMo bridge
+
+         bridge
+             List the friendly name, IP address and port of all WeMo devices on
+             a WeMo Bridge or home network
+
+     The options are defined as:
+??? options need to be defined
+       --ip <ip>           IP Address of device
+
+       --name              Friendly name of WEMO
+
+       --password <pswd>   Password for home Wi-Fi
+''')
+    else:
+        # ??? add argparse
+        #   ??? log.screen and tools.session.on should be options set from command line
+        #   ??? logger level and output should be command line options
+        # ??? cherrypi is writing to a log file - ???
+
+        # get host configs from server.ini
+        # note: is there a way to put the config into conf and pull from api functions - ??? not sure what this means ???
+        config_parse = configparser.ConfigParser()
+        config_parse.sections()
+        config_parse.read( os.path.dirname(os.path.realpath(__file__)) + '/server.ini' )
+
+        conf = {
+            'global':{
+                'server.socket_host': config_parse['DuplicatorSettings']['Host'],
+                'server.socket_port': int(config_parse['DuplicatorSettings']['SocketPort']),
+                'log.access_file' : config_parse['DuplicatorSettings']['Logs']+"/access.log",
+                'log.screen': True,
+                'tools.sessions.on': True
+            }
+        }
+
+        # create a daemon for cherrpy so it will create a thread when started
+        cherrypy.process.plugins.Daemonizer(cherrypy.engine).subscribe()
+
+        cherrypy.quickstart(SDCardDupe(), '/', conf)
 
 if __name__ == '__main__':
     logger = MyLog()
@@ -274,28 +376,9 @@ if __name__ == '__main__':
     logger.setOutput("CONSOLE")
     logger.openOutput()
 
-    logger.logPrint("INFO", "Starting McrioSD Card Duplicator [server.py]")
-    
-    # get host configs from server.ini
-    # note: is there a way to put the config into conf and pull from api functions - ??? not sure what this means ???
-    config_parse = configparser.ConfigParser()
-    config_parse.sections()
-    config_parse.read( os.path.dirname(os.path.realpath(__file__)) + '/server.ini' )
+    logger.logPrint("INFO", "Starting MicroSD Card Duplicator [server.py]")
 
-    conf = {
-        'global':{
-            'server.socket_host': config_parse['DuplicatorSettings']['Host'],
-            'server.socket_port': int(config_parse['DuplicatorSettings']['SocketPort']),
-            'log.access_file' : config_parse['DuplicatorSettings']['Logs']+"/access.log",
-            'log.screen': False,
-            'tools.sessions.on': True
-        }
-    }
+    main(logger)
 
-    # create a daemon for cherrpy so it will create a thread when started
-    cherrypy.process.plugins.Daemonizer(cherrypy.engine).subscribe()
-
-    cherrypy.quickstart(SDCardDupe(), '/', conf)
-    
     logger.logPrint("INFO", "Exiting MicroSD Card Duplicator [server.py]")
-    closeMyLog(logger)
+    logger.closeMyLog(logger)
