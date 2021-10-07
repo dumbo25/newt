@@ -1,28 +1,29 @@
 # Newt (Open Source Micro SD Card Image Duplicator)
 
-Newt provides a GUI to assist in cloning multiple MicroSD cards from one .img file.
+Newt clones multiple MicroSD cards from one .img file.
 
-A Raspberry Pi connects to a powered USB 3.0 HUB.
+A Raspberry Pi (RPi) runs a webservber. The RPi connects to a powered USB 3.0 HUB. A user opens a browser and connects to the RPi's webserver to clone the image.
 
-This fork of OSID is designed for an 8GB Raspberry Pi 4 running Raspberry Pi OS.
+Newt runs on an 8GB Raspberry Pi 4 running Raspberry Pi OS.
 
 
 ## Required Hardware
-- 8GB Raspberry Pi 4
-- 64GB MicroSD Card
-- Powered USB 3.0 hub (10 ports)
+- 8GB Raspberry Pi 4 with Case and Power Adapter
+- 64GB Class 10, Ultra MicroSD Card with Raspberry Pi OS
+- Powered USB 3.0 hub (10 ports) wiht power cord and USB cable
 - MicroSD card USB 3.0 readers (10 total)
+- 1-10 16GB or 32GB Class 10, Ultra MicroSD cards
 
 ## Installation 
 Newt can run on the Raspberry Pi OS Desktop or it can be run headless from another server on a home LAN.
 
 These directions assume a Raspberry Pi is properly setup and running Raspberry Pi OS and the goal is to run the MicroSD Card duplicator as a networked device on a home LAN.
 
-install.sh installs all the required software, makes any needed directories and sets any needed permissions. 
+install.sh installs all the required software, makes any needed directories and sets any needed permissions. install.sh is a generic installer and relies on install.cfg to set up newt correctly.
 
 * Step 1. Open a terminal window
 * Step 2. From the terminal window, ssh into a Raspberry Pi 4 running Raspberry PI OS. 
-* Step 3. Download and run newt's install.sh script
+* Step 3. Download and run newt's install.sh script and configuration file 
 
 ```
 wget https://raw.githubusercontent.com/dumbo25/newt/master/install.sh
