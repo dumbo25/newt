@@ -1,4 +1,4 @@
-# Newt (Open Source Micro SD Card Image Duplicator)
+# Newt (MicroSD Card Duplicator)
 
 Newt clones multiple MicroSD cards from one .img file.
 
