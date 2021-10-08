@@ -50,16 +50,9 @@ My Guidelines for pythonic code:
 #      redmoon: https://github.com/dumbo25/flaskMenu
 #   m) need a systemd service to keep the server running
 #   p) figure out how it works using USBs on raspberry pi; create fake *.img file; or  get RPiOS lite
-#   q) when running sudo python3 serer.py I got the error
-#       Oct 07 17:12:52 duplicator apachectl[14272]: AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 127.0.1.1
-#       add a line at the end using
-#           sudo nano /etc/httpd/conf/httpd.conf
-#           ServerName 127.0.0.1
-#       checked with
-#           sudo apachectl configtest
-#           sudo systemctl reload apache2.service
-#       check it loaded with
-#           sudo journalctl -u apache2.service --since today --no-pager
+#   q) need to configure apache2 config file and then reload apache2
+#       echo "ServerName 127.0.0.1" | sudo tee -a /etc/apache2/apache2.conf
+#       sudo systemctl reload apache2.service
 #
 #   x) run pydoc
 #   y) run pylint
