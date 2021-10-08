@@ -29,10 +29,9 @@ wget https://raw.githubusercontent.com/dumbo25/newt/master/install.sh
 wget https://raw.githubusercontent.com/dumbo25/newt/master/install.cfg
 sudo bash install.sh
 ```
-* Step 4. Edit the following config file and add a line at the end of the file
+* Step 4. Run the following command to add a line to the end of apache2.conf
 ```
-sudo nano /etc/httpd/conf/ttpd.conf
-ServerName 127.0.0.1
+echo "ServerName 127.0.0.1" | sudo tee -a /etc/apache2/apache2.conf
 ```
 * Step 5. Reload apache2 using
 ```
