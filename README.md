@@ -24,15 +24,22 @@ install.sh installs all the required software, makes any needed directories and 
 * Step 1. Open a terminal window
 * Step 2. From the terminal window, ssh into a Raspberry Pi 4 running Raspberry PI OS. 
 * Step 3. Download and run newt's install.sh script and configuration file 
-
 ```
 wget https://raw.githubusercontent.com/dumbo25/newt/master/install.sh
 wget https://raw.githubusercontent.com/dumbo25/newt/master/install.cfg
 sudo bash install.sh
 ```
-* Step 4. 
-* Step 5. Change to /home/pi/newt and run: sudo python3 server.py
-* Step 6. Open a browser and enter hostname.local
+* Step 4. Edit the following config file and add a line at the end of the file
+```
+sudo nano /etc/httpd/conf/ttpd.conf
+ServerName 127.0.0.1
+```
+* Step 5. Reload apache2 using
+```
+sudo systemctl reload apache2.service
+```
+* Step 6. Change to /home/pi/newt and run: sudo python3 server.py
+* Step 7. Open a browser and enter hostname.local
 
 
 ## Usage
