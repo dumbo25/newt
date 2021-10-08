@@ -30,27 +30,10 @@ wget https://raw.githubusercontent.com/dumbo25/newt/master/install.sh
 wget https://raw.githubusercontent.com/dumbo25/newt/master/install.cfg
 sudo bash install.sh
 ```
-* Step 4. Open a browser and enter the URL suggested by install.sh
+* Step 4. 
+* Step 5. Change to /home/pi/newt and run: sudo python3 server.py
+* Step 6. Open a browser and enter hostname.local
 
-
-## Configuration Files
-### install.cfg
-* install.sh is a generic bash installation script. install.cfg tells the script what to install and how to install it.
-
-### server.ini
-* ImagePath is the directory holding the .img files that can be used.
-* Host is the hostname used for the webpage.
-* SocketPort is the port you want to use to dish out the API links.
-* Logs is the directory to hold all of your logs.
-* SkeletonLocation is where you can find the Skeleton CSS Framework.
-	* A Skeleton CSS file is included in www.
-	* You can also pull a fresh copy of the [Skeleton-Framework](https://github.com/skeleton-framework/skeleton-framework) and define the location.
-
-### run_app.sh
-* Headless Setup
-	* Newt runs headless on a networked Raspberry
-	* Comment out the chromuim line in run_app.sh
-	* Set Raspbery Pi IP on server.ini using ??? Host = ???
 
 ## Usage
 ### Accepted image file
