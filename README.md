@@ -15,14 +15,18 @@ Newt runs on an 8GB Raspberry Pi 4 running Raspberry Pi OS.
 - 1-10 16GB or 32GB Class 10, Ultra MicroSD cards
 
 ## Installation 
-Newt can run on the Raspberry Pi OS Desktop or it can be run headless from another server on a home LAN.
+Newt runs headless on a Raspberry Pi 4 using Raspberry Pi OS on a home LAN.
 
-These directions assume a Raspberry Pi is properly setup and running Raspberry Pi OS and the goal is to run the MicroSD Card duplicator as a networked device on a home LAN.
+These directions assume a [Raspberry Pi is properly setup](https://sites.google.com/site/cartwrightraspberrypiprojects/home/steps/setup-raspberry-pi-3-with-raspbian) and running Raspberry Pi OS and the goal is to run the MicroSD Card duplicator as a networked device on a home LAN.
 
 install.sh installs all the required software, makes any needed directories and sets any needed permissions. install.sh is a generic installer and relies on install.cfg to set up newt correctly.
 
 * Step 1. Open a terminal window
 * Step 2. From the terminal window, ssh into a Raspberry Pi 4 running Raspberry PI OS. 
+'''
+ssh pi@newt.♣your-hostname♣
+password: ♣your-password♣
+'''
 * Step 3. Download and run newt's install.sh script and configuration file 
 ```
 wget https://raw.githubusercontent.com/dumbo25/newt/master/install.sh
