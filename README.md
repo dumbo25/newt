@@ -81,13 +81,14 @@ When refreshing the newt web page (or accessing it), newt will scan for availabl
 
 
 ### Significant Changes from Aaron's OSID
-- added generic install.sh with duplicator specific install.cfg
-- simplify directions
-- migrate from CherryPy to flask or python https
--To Dos:
--- getImages doesn't show anything in the browser. Images are in the directory
--- also no devices are showing
--- font of credits is too large
+* added generic install.sh with duplicator specific install.cfg
+* simplify directions
+* migrate from CherryPy to flask or python https
+* To Dos:
+** getImages doesn't show anything in the browser. Images are in the directory
+** also no devices are showing
+** font of credits is too large
+** get mylog to write to same directory (not newt/server, but newt/log) or at best same file as server.py (access.log)
 
 ### Dependencies
 * [CherryPy](http://docs.cherrypy.org/en/latest/) - API Library for Python used to manage all actions
