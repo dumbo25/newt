@@ -5,11 +5,11 @@ Newt clones multiple MicroSD cards from one .img file.
 Latest version of Raspberry Pi OS
 
 ## Required Hardware
-- 8GB Raspberry Pi 4 with Case connected to Power Adapter
-- 64GB Class 10, Ultra MicroSD Card with Raspberry Pi OS inserted into the Raspberry Pi's MicroSD Card slot
-- Powered USB 3.0 hub (10 ports) with power cord and USB cable connected to Raspberry Pi
-- MicroSD card USB 3.0 readers (10 total) inserted into USB Hub
-- 1-10 16GB or 32GB Class 10, Ultra MicroSD cards inserted into USB readers
+* 8GB Raspberry Pi 4 with Case connected to Power Adapter
+* 64GB Class 10, Ultra MicroSD Card with Raspberry Pi OS inserted into the Raspberry Pi's MicroSD Card slot
+* Powered USB 3.0 hub (10 ports) with power cord and USB cable connected to Raspberry Pi
+* MicroSD card USB 3.0 readers (10 total) inserted into USB Hub
+* 1-10 16GB or 32GB Class 10, Ultra MicroSD cards inserted into USB readers
 
 ## Installation 
 Newt runs headless on a Raspberry Pi 4 using Raspberry Pi OS on a home LAN.
@@ -50,14 +50,23 @@ http://♣your-hostname♣.
 Newt clones one image to 1-10 MicroSD cards. I believe the number of MicroSD Cards can be increased by adding more USB Hubs, but I have not tested this.
 
 ## Get an image
-Download image from here to your laptop https://www.raspberrypi.com/software/operating-systems/
-Open a terminal window on laptop
-CD Downloads
+* Download image from here to your laptop https://www.raspberrypi.com/software/operating-systems/
+* Open a terminal window on laptop
+* Change directory to Downloads
+```
+cd Downloads
+```
+* Copy the file from MacBook to Raspberry Pi
+```
 scp 2021-05-07-raspios-buster-armhf-lite.zip pi@newt:/home/pi
-Open terminal window and ssh to Raspberry Pi
+```
+* Open a terminal window and ssh to Raspberry Pi
+```
+ssh pi@♣your-hostname♣
+password: ♣your-password♣
 unzip scp 2021-05-07-raspios-buster-armhf-lite.zip 
 cp 2021-05-07-raspios-buster-armhf-lite.img newt/clone/.
-sudo systemctl stop apache2.service
+```
 
 ### Accepted image file
 Newt will accept any image file ending with .img name. Other extensions will silently be ignored.
