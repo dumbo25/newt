@@ -20,10 +20,10 @@ install.sh installs all the required software, makes any needed directories and 
 
 * Step 1. Open a terminal window
 * Step 2. From the terminal window, ssh into a Raspberry Pi 4 running Raspberry PI OS. 
-'''
+```
 ssh pi@newt.♣your-hostname♣
 password: ♣your-password♣
-'''
+```
 * Step 3. Download and run newt's install.sh script and configuration file 
 ```
 wget https://raw.githubusercontent.com/dumbo25/newt/master/install.sh
