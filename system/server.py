@@ -73,6 +73,7 @@ import os
 import sys
 import subprocess
 import configparser
+import socket
 
 # Modules that must be installed (pip3)
 import cherrypy
@@ -86,24 +87,27 @@ from mylog import MyLog
 
 # ??? old to do: too many config_parse blocks, create a function to easily call it
 
+# Global Variables
+HostIP = "127.0.0.1"
+
 # class SDCardDupe(object):
 class SDCardDupe(object):
-    global logger
-
     @cherrypy.expose
     def index(self):
+        global logger
+        global HostIP
 
-        logger.printLog("INFO", "index")
+        logger.logPrint("INFO", "index")
         # get host configs from server.ini
         config_parse = configparser.ConfigParser()
         config_parse.sections()
         config_parse.read( os.path.dirname(os.path.realpath(__file__)) + '/server.ini' )
 
-
         # Get webpage, then replace needed parts here
         www_path = config_parse['DuplicatorSettings']['HtmlPath']
         html_string = open(www_path + 'index.html', 'r').read()
-        hostname_port = config_parse['DuplicatorSettings']['Host']+":"+config_parse['DuplicatorSettings']['SocketPort']
+        # hostname_port = config_parse['DuplicatorSettings']['Host']+":"+config_parse['DuplicatorSettings']['SocketPort']
+        hostname_port = HostIP+":"+config_parse['DuplicatorSettings']['SocketPort']
         html_string = html_string.replace("replacewithhostnamehere",hostname_port)
 
         css_string = '<style>' + open(config_parse['DuplicatorSettings']['SkeletonLocation'], 'r').read() + '</style>'
@@ -114,6 +118,11 @@ class SDCardDupe(object):
 
     @cherrypy.expose
     def monitor(self):
+        global logger
+        global HostIP
+
+        logger.logPrint("INFO", "monitor")
+
         # get host configs from server.ini
         config_parse = configparser.ConfigParser()
         config_parse.sections()
@@ -122,7 +131,8 @@ class SDCardDupe(object):
         # Get webpage, then replace needed parts here
         www_path = config_parse['DuplicatorSettings']['HtmlPath']
         html_string = open(www_path + 'monitor.html', 'r').read()
-        hostname_port = config_parse['DuplicatorSettings']['Host']+":"+config_parse['DuplicatorSettings']['SocketPort']
+        # hostname_port = config_parse['DuplicatorSettings']['Host']+":"+config_parse['DuplicatorSettings']['SocketPort']
+        hostname_port = HostIP+":"+config_parse['DuplicatorSettings']['SocketPort']
         html_string = html_string.replace("replacewithhostnamehere",hostname_port)
 
         css_string = '<style>' + open(config_parse['DuplicatorSettings']['SkeletonLocation'], 'r').read() + '</style>'
@@ -132,8 +142,10 @@ class SDCardDupe(object):
 
     @cherrypy.expose
     def posted(self,img_file,devices):
+        global logger
+        global HostIP
 
-        logger.printLog("INFO", "posted")
+        logger.logPrint("INFO", "posted")
 
         # get all mounted items on the rpi
         mounted_list = []
@@ -195,9 +207,9 @@ class SDCardDupe(object):
 
         subprocess.Popen(['sudo', 'bash', dd_cmd_file], close_fds=True)
 
-        hostname_port = config_parse['DuplicatorSettings']['Host']+":"+config_parse['DuplicatorSettings']['SocketPort']
+        # hostname_port = config_parse['DuplicatorSettings']['Host']+":"+config_parse['DuplicatorSettings']['SocketPort']
+        hostname_port = HostIP+":"+config_parse['DuplicatorSettings']['SocketPort']
         monitor_url = "http://" +  hostname_port + "/monitor";
-
 
         html_string = "<html><head>"
         html_string += "<meta http-equiv=\"refresh\" content=\"0; URL='" +monitor_url+ "'\" />"
@@ -210,8 +222,10 @@ class SDCardDupe(object):
     @cherrypy.expose
     @cherrypy.tools.json_out()
     def getStatus(self):
+        global logger
+        global HostIP
 
-        logger.printLog("INFO", "getStatus")
+        logger.logPrint("INFO", "getStatus")
 
         # get host configs from server.ini
         config_parse = configparser.ConfigParser()
@@ -244,8 +258,10 @@ class SDCardDupe(object):
     @cherrypy.expose
     @cherrypy.tools.json_out()
     def getDevices(self):
+        global logger
+        global HostIP
 
-        logger.printLog("INFO", "getDevices")
+        logger.logPrint("INFO", "getDevices")
 
         list_devices = []
 
@@ -277,8 +293,10 @@ class SDCardDupe(object):
     @cherrypy.expose
     @cherrypy.tools.json_out()
     def getImages(self):
+        global logger
+        global HostIP
 
-        logger.printLog("INFO", "getImages")
+        logger.logPrint("INFO", "getImages")
 
         list_images = []
 
@@ -308,6 +326,8 @@ class SDCardDupe(object):
         return json.dumps(list_images)
 
 def main(logger):
+    global HostIP
+
     # Original script failed, with -h or --help or no options
     # Optional arguments, like -h or --help don't work where options have Required = True set
     # help text should be limited to 80characters
@@ -349,6 +369,11 @@ def main(logger):
         #   ??? logger level and output should be command line options
         # ??? cherrypi is writing to a log file - ???
 
+        # gert host IP Address, ignore the IP address in server.ini
+        s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+        s.connect(("8.8.8.8", 80))
+        HostIP = s.getsockname()[0]
+
         # get host configs from server.ini
         # note: is there a way to put the config into conf and pull from api functions - ??? not sure what this means ???
         config_parse = configparser.ConfigParser()
@@ -357,13 +382,28 @@ def main(logger):
 
         conf = {
             'global':{
-                'server.socket_host': config_parse['DuplicatorSettings']['Host'],
+                # 'server.socket_host': config_parse['DuplicatorSettings']['Host'],
+                'server.socket_host': HostIP,
                 'server.socket_port': int(config_parse['DuplicatorSettings']['SocketPort']),
                 'log.access_file' : config_parse['DuplicatorSettings']['Logs']+"/access.log",
                 'log.screen': True,
                 'tools.sessions.on': True
             }
         }
+
+        print("DEBUG: conf:")
+        print(conf)
+
+        print("DEBUG: grabbed lines from ~105")
+        config_parse.read( os.path.dirname(os.path.realpath(__file__)) + '/server.ini' )
+        www_path = config_parse['DuplicatorSettings']['HtmlPath']
+        print("DEBUG: index: www_path = " + www_path)
+        print("End of DEBUG: grabbed lines from ~105")
+
+        # Get webpage, then replace needed parts here
+        hostname_port = config_parse['DuplicatorSettings']['Host']+":"+config_parse['DuplicatorSettings']['SocketPort']
+        print("DEBUG: hostname_port = " + hostname_port)
+        print("DEBUG: HostIP = " + HostIP)
 
         # create a daemon for cherrpy so it will create a thread when started
         cherrypy.process.plugins.Daemonizer(cherrypy.engine).subscribe()
