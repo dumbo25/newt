@@ -49,6 +49,16 @@ http://♣your-hostname♣.
 ```
 Newt clones one image to 1-10 MicroSD cards. I believe the number of MicroSD Cards can be increased by adding more USB Hubs, but I have not tested this.
 
+## Get an image
+Download image from here to your laptop https://www.raspberrypi.com/software/operating-systems/
+Open a terminal window on laptop
+CD Downloads
+scp 2021-05-07-raspios-buster-armhf-lite.zip pi@newt:/home/pi
+Open terminal window and ssh to Raspberry Pi
+unzip scp 2021-05-07-raspios-buster-armhf-lite.zip 
+cp 2021-05-07-raspios-buster-armhf-lite.img newt/clone/.
+sudo systemctl stop apache2.service
+
 ### Accepted image file
 Newt will accept any image file ending with .img name. Other extensions will silently be ignored.
 
