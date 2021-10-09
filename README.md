@@ -60,7 +60,7 @@ cd Downloads
 ```
 scp 2021-05-07-raspios-buster-armhf-lite.zip pi@newt:/home/pi
 ```
-* Open a terminal window and ssh to Raspberry Pi
+* Open a terminal window. ssh to Raspberry Pi. unzip the image zip file. Copy file to clone directory
 ```
 ssh pi@♣your-hostname♣
 password: ♣your-password♣
