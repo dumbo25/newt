@@ -101,7 +101,7 @@ class SDCardDupe(object):
 
 
         # Get webpage, then replace needed parts here
-        www_path = "/".join(os.path.dirname(os.path.realpath(__file__)).split("/")[:-1]) + "/www/"
+        www_path = config_parse['DuplicatorSettings']['HtmlPath']
         html_string = open(www_path + 'index.html', 'r').read()
         hostname_port = config_parse['DuplicatorSettings']['Host']+":"+config_parse['DuplicatorSettings']['SocketPort']
         html_string = html_string.replace("replacewithhostnamehere",hostname_port)
