@@ -1,18 +1,15 @@
 # Newt (MicroSD Card Duplicator)
-
 Newt clones multiple MicroSD cards from one .img file.
 
-A Raspberry Pi (RPi) runs the newt webserver. The RPi connects to a powered USB 3.0 HUB. MicroSD cards are inserted into the hub. A user opens a browser and connects to the RPi's webserver to clone one image to one to ten MicroSD cards.
-
-Newt runs on Raspberry Pi OS, which is running on an 8GB Raspberry Pi 4.
-
+## Required Operating System
+Latest version of Raspberry Pi OS
 
 ## Required Hardware
-- 8GB Raspberry Pi 4 with Case and Power Adapter
-- 64GB Class 10, Ultra MicroSD Card with Raspberry Pi OS
-- Powered USB 3.0 hub (10 ports) wiht power cord and USB cable
-- MicroSD card USB 3.0 readers (10 total)
-- 1-10 16GB or 32GB Class 10, Ultra MicroSD cards
+- 8GB Raspberry Pi 4 with Case connected to Power Adapter
+- 64GB Class 10, Ultra MicroSD Card with Raspberry Pi OS inserted into the Raspberry Pi's MicroSD Card slot
+- Powered USB 3.0 hub (10 ports) with power cord and USB cable connected to Raspberry Pi
+- MicroSD card USB 3.0 readers (10 total) inserted into USB Hub
+- 1-10 16GB or 32GB Class 10, Ultra MicroSD cards inserted into USB readers
 
 ## Installation 
 Newt runs headless on a Raspberry Pi 4 using Raspberry Pi OS on a home LAN.
@@ -46,6 +43,10 @@ sudo systemctl reload apache2.service
 
 
 ## Usage
+A Raspberry Pi (RPi) runs the newt webserver. A user opens a browser and connects to the RPi's webserver http://♣your-hostname♣. 
+
+Newt clones one image to 1-10 MicroSD cards. I believe the number of MicroSD Cards can be increased by adding more USB Hubs, but I have not tested this.
+
 ### Accepted image file
 Newt will accept any image file ending with .img name. Other extensions will silently be ignored.
 
