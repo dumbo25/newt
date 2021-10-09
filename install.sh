@@ -18,34 +18,14 @@
 # items.
 #
 # To Do List:
-# **************************** STOPPED HERE *********************************************************************
-#   c) check that
-#      c.1) all files are in correct directories
-#      c.2) all file and directory ownerships are correct
-#      c.3) all file and directorie permissions are correct
-#   d) options
-#      d.1) add name option to replace pi as default username; change to user's
-#           home directory
-#      d.2) different .cfg file
-#   h) home directory for app
-#      h.1) default is /home/pi
-#      h.2) change home directory
-#   l) how does website start?
-#      add to help and when exiting scrip
-#      add exit optional exit message to .cfgt
-#   m) get needed graphics from original; repo ???
-#      https://github.com/rockandscissor/osid/tree/master/www/public_html/images
-#   n) migrate from CherryPy to flask or python https
-#   p) add list of random commands to run at end of script
-#   q) do some cfg features/commands need wildcards? move, remove, ...
-#   r) is it an exit message needed in cfg?
-#   s) change name to newt
-#
-#   x) run through https://www.shellcheck.net/, which is a lint usitlty for bash
 #   y) add install.sh and install.cfg to github duplicator
 #   z) add install.sh and install.cfg to github template
 #
 # Do later or not at all:
+#   - Add option to use different .cfg file
+#   - Add option to change username from pi
+#   - Add option to change the home directory from /home/pi to something else
+#     I rarely do either of the above. So, I am not sure it is worth the effort
 #   - I should use lower case for variables and upper case for constants but
 #     I run into issues on collisions between lowercase keywords and variables
 #   - Add option to suppress output. This is more complex then it should be.
@@ -60,6 +40,16 @@
 #     interactive mode. So, no need to add logging.
 #   - Do not make a tmp or install directory and then move files from there. It
 #     is easier to just get the files into the correct directory
+#   - add list of user defined commands to run at end of the script, but before
+#     install. I thought this would be a good add for anything I missed. However,
+#     an overarching goal is this script can be run multiple times, each time
+#     putting the RPi into a known state. Adding user defined command would be
+#     too difficult to backout, unless both an install and a backout command
+#     are provided. It might be easier to just do this as needed
+#
+# Completed:
+#   - run script through https://www.shellcheck.net/, which is a lint usitlty for
+#     bash shell scripts. Found and fixed all issues as of 09OCT2021.
 #
 # Naming conventions
 #   - lowercase or camelCase for local variable and function names
@@ -71,9 +61,10 @@
 
 ################################## Functions ###################################
 function echoStartingScript {
-	if [ $StartMessageCount = 0 ]
+	if [ "$StartMessageCount" -eq 0 ]
 	then
         	echo -e "\n${Bold}Starting Installation Script${Normal}"
+                echo "  ${Bold}installing $Name${Normal}"
 	        StartMessageCount=1
 	fi
 }
@@ -106,18 +97,18 @@ function makePath {
 		then
 	                echo "    ${Bold}making path: $1${Normal}"
 			# -p makes all parent directories if necessary
-			mkdir -p $1
+			mkdir -p "$1"
 		fi
         fi
 }
 
 function installApt {
 	# if there packages to install
-	if [[ ${DebianPackages[@]} ]]
+	if [[ ${DebianPackages[*]} ]]
 	then
 		echo -e "\n  ${Bold}installing debian packages${Normal}"
 		# loop through all the packages
-		for p in ${DebianPackages[@]}
+		for p in "${DebianPackages[@]}"
 		do
 			# if the package is not already installed
 		        notInstalled=$(dpkg-query -W --showformat='${Status}\n' "$p" | grep "install ok installed")
@@ -134,11 +125,11 @@ function installApt {
 
 function installPip3 {
         # if there packages to install
-        if [[ ${Pip3Packages[@]} ]]
+        if [[ ${Pip3Packages[*]} ]]
         then
                 echo -e "\n  ${Bold}installing pip3 packages${Normal}"
                 # loop through all the packages
-                for p in ${Pip3Packages[@]}
+                for p in "${Pip3Packages[@]}"
                 do
                         # if the package is not already installed
 			notInstalled=$(pip3 list | grep "$p")
@@ -159,7 +150,7 @@ function reloadServices {
         then
                 echo -e "\n  ${Bold}reloading services${Normal}"
                 # loop through all the packages
-                for p in ${ReloadServices[@]}
+                for p in "${ReloadServices[@]}"
                 do
 			"$p" reload
                 done
@@ -175,7 +166,7 @@ function restartServices {
         then
                 echo -e "\n  ${Bold}restarting services${Normal}"
                 # loop through all the packages
-                for p in ${RestartServices[@]}
+                for p in "${RestartServices[@]}"
                 do
                         "$p" restart
                 done
@@ -193,7 +184,7 @@ function gitFiles {
         then
                 echo -e "\n  ${Bold}gitting files${Normal}"
                 # loop through all the files
-                for git in ${GitFiles[@]}
+                for git in "${GitFiles[@]}"
                 do
 			# get filename
 		        # return string after last slash
@@ -213,17 +204,19 @@ function gitFiles {
 # git files from github
 # the directory is extracted from the repository
 function gitClone {
+        echo -e "\n  ${Bold}gitting clone: $GitClone${Normal}"
 	repository=$GitClone
 	# remove ".git"
 	repository=${repository::-4}
 	# return string after last slash
 	directory=${repository##*/}
-        if [ ! -d "$directory" ]
+        if [ -d "$directory" ]
         then
+                echo "    ${Bold}removing directory: $directory${Normal}"
 		rm -rf "$directory"
-                echo -e "\n  ${Bold}gitting clone: $GitClone${Normal}"
-                git clone $GitClone
         fi
+        echo -e "\n  ${Bold}gitting clone: $GitClone${Normal}"
+        git clone "$GitClone"
 }
 
 # Bash doesn't have multidimensional tables. So, this is my hack to pretend it does
@@ -231,11 +224,11 @@ function gitClone {
 # So, this function moves each row using mv fomPath/filename toPath/."
 function moveFiles {
         # if there are files to move
-        if [[ ${MoveFiles[@]} ]]
+        if [[ ${MoveFiles[*]} ]]
         then
                 echo -e "\n  ${Bold}moving files${Normal}"
                 # loop through all the packages
-                for f in ${MoveFiles[@]}
+                for f in "${MoveFiles[@]}"
                 do
                         IFS=';' read -ra file <<< "$f"
 			# create path where file will be moved
@@ -246,7 +239,7 @@ function moveFiles {
 			then
 				# move file fromPath to toPath
 		                echo "    ${Bold}mv ${file[1]}/${file[0]} ${file[2]}/. ${Normal}"
-				mv ${file[1]}/${file[0]} ${file[2]}/.
+				sudo mv "${file[1]}/${file[0]}" "${file[2]}/."
 			fi
                 done
         fi
@@ -257,11 +250,11 @@ function moveFiles {
 # Each enttry is a row in a table and includes: "path or path/filename;ownership"
 function changeOwnership {
         # if there are files to move
-        if [[ ${ChangeOwnership[@]} ]]
+        if [[ ${ChangeOwnership[*]} ]]
         then
                 echo -e "\n  ${Bold}changing ownership${Normal}"
                 # loop through all the entries
-                for f in ${ChangeOwnership[@]}
+                for f in "${ChangeOwnership[@]}"
                 do
                         IFS=';' read -ra file <<< "$f"
                         # if the entry is a file
@@ -269,12 +262,12 @@ function changeOwnership {
                         then
                                 # change ownership just on the file
                                 echo "    ${Bold}chown ${file[0]} to ${file[1]} ${Normal}"
-                                chown ${file[1]} ${file[0]}
+                                chown "${file[1]}" "${file[0]}"
 			elif [ -d "${file[0]}" ]
 			then
                                 # change ownership just on the file
                                 echo "    ${Bold}chown rexcursively on ${file[0]} to ${file[1]} ${Normal}"
-                                chown -R ${file[1]} ${file[0]}
+                                chown -R "${file[1]}" "${file[0]}"
 			fi
                 done
         fi
@@ -285,11 +278,11 @@ function changeOwnership {
 # Each enttry is a row in a table and includes: "path/filename;permissions"
 function changePermissions {
         # if there are files to move
-        if [[ ${ChangePermissions[@]} ]]
+        if [[ ${ChangePermissions[*]} ]]
         then
                 echo -e "\n  ${Bold}changing permissions${Normal}"
                 # loop through all the entries
-                for f in ${ChangePermissions[@]}
+                for f in "${ChangePermissions[@]}"
                 do
                         IFS=';' read -ra file <<< "$f"
                         # if the entry is a file
@@ -297,19 +290,47 @@ function changePermissions {
                         then
                                 # change ownership just on the file
                                 echo "    ${Bold}chmod ${file[0]} to ${file[1]} ${Normal}"
-                                chmod ${file[1]} ${file[0]}
+                                chmod "${file[1]}" "${file[0]}"
                         fi
                 done
         fi
 }
 
 
+# Remove files and directories that are not needed
+function cleanUp {
+        # if there are files to move
+        if [[ ${CleanUp[*]} ]]
+        then
+                echo -e "\n  ${Bold}removing files and directories that are not needed${Normal}"
+                # loop through all the entries
+                for f in "${CleanUp[@]}"
+                do
+                        IFS=';' read -ra file <<< "$f"
+                        # if the entry is a file
+                        if [ -f "${file[0]}" ]
+                        then
+                                # remove file
+                                echo "    ${Bold}remove ${file[0]} ${Normal}"
+                                rm "${file[0]}"
+                        elif [ -d "${file[0]}" ]
+                        then
+                                #remove directory
+                                echo "    ${Bold}remove rexcursively ${file[0]} ${Normal}"
+                                rm -R "${file[0]}"
+                        fi
+                done
+        fi
+}
+
 
 ############################### Global Variables ###############################
 Bold=$(tput bold)
 Normal=$(tput sgr0)
 StartMessageCount=0
-BaseDirectory=$PWD
+# I try not to cd in the script. If I do, then it might be good to have the base
+# directory
+# BaseDirectory=$PWD
 Clear=true
 Update=true
 RebootOn=true
@@ -426,13 +447,16 @@ changeOwnership
 # change permissions
 changePermissions
 
+# remove files and directories that are not needed
+cleanUp
+
 # reload and restart services
 reloadServices
 
 restartServices
 
-# print message on how to connect to duplicator and wait 10s
-echo -e "\n  ${Bold}to access website, open a browser and enter ???${Normal}"
+# print exit message
+echo -e "$ExitMessage"
 
 if $RebootOn
 then
