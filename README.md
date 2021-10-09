@@ -84,6 +84,8 @@ When refreshing the newt web page (or accessing it), newt will scan for availabl
 ## Versioning
 [SemVer](http://semver.org/) is used for version numbers. For the versions available, see the [tags on this repository](https://github.com/your/project/tags).
 
+Version needs to be changed in index.html, monitor.html.
+
 
 ## License
 This project is licensed under the GNU GPLv3 - see the [LICENSE.md](LICENSE.md) file for details
