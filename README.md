@@ -2,9 +2,9 @@
 
 Newt clones multiple MicroSD cards from one .img file.
 
-A Raspberry Pi (RPi) runs a webservber. The RPi connects to a powered USB 3.0 HUB. A user opens a browser and connects to the RPi's webserver to clone the image.
+A Raspberry Pi (RPi) runs the newt webserver. The RPi connects to a powered USB 3.0 HUB. MicroSD cards are inserted into the hub. A user opens a browser and connects to the RPi's webserver to clone one image to one to ten MicroSD cards.
 
-Newt runs on an 8GB Raspberry Pi 4 running Raspberry Pi OS.
+Newt runs on Raspberry Pi OS, which is running on an 8GB Raspberry Pi 4.
 
 
 ## Required Hardware
