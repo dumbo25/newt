@@ -98,6 +98,7 @@ When refreshing the newt web page (or accessing it), newt will scan for availabl
   * also no devices are showing
   * font of credits is too large
   * get mylog to write to same directory (not newt/server, but newt/log) or at best same file as server.py (access.log)
+  * add an image of what the app looks like to this readme.md
 
 ### 6.2 Dependencies
 * [CherryPy](http://docs.cherrypy.org/en/latest/) - API Library for Python used to manage all actions
