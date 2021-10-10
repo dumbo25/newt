@@ -83,8 +83,10 @@ When refreshing the newt web page (or accessing it), newt will scan for availabl
 ### Significant Changes from Aaron's OSID
 * added generic install.sh with duplicator specific install.cfg
 * simplify directions
-* migrate from CherryPy to Django and 
-* migrate from skeleton to https://github.com/uikit/uikit or https://purecss.io/ : https://github.com/pure-css/pure/
+* migrate from CherryPy to Django
+  * Django: ★s 60.086, Flask: ★s 56,845, CherryPy: ★s 1,458; source PyPi 10OCT2021
+* migrate from 
+  * [skeleton](https://github.com/dhg/Skeleton): ★s 18.4k, [uikit](https://github.com/uikit/uikit) ★s 17.1k [pure](https://github.com/pure-css/pure/)★s 21.9k; source GitHub 10OCT2021
 * To Dos:
   * getImages doesn't show anything in the browser. Images are in the directory
   * also no devices are showing
