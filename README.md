@@ -83,7 +83,8 @@ When refreshing the newt web page (or accessing it), newt will scan for availabl
 ### Significant Changes from Aaron's OSID
 * added generic install.sh with duplicator specific install.cfg
 * simplify directions
-* migrate from CherryPy to flask or python https
+* migrate from CherryPy to Django and 
+* migrate from skeleton to https://github.com/uikit/uikit or https://purecss.io/ : https://github.com/pure-css/pure/
 * To Dos:
   * getImages doesn't show anything in the browser. Images are in the directory
   * also no devices are showing
