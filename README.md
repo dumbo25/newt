@@ -34,12 +34,8 @@ sudo bash install.sh
 ```
 echo "ServerName 127.0.0.1" | sudo tee -a /etc/apache2/apache2.conf
 ```
-* Step 5. Reload apache2 using
-```
-sudo systemctl reload apache2.service
-```
-* Step 6. Change to /home/pi/newt and run: sudo python3 server.py
-* Step 7. Open a browser and enter hostname.local
+* Step 5. Change to /home/pi/newt and run: sudo python3 server.py
+* Step 6. Open a browser and enter hostname.local
 
 
 ## 4. Get an image
