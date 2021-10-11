@@ -79,7 +79,7 @@ When refreshing the newt web page (or accessing it), newt will scan for availabl
 * [rockandscissor/OSID](https://github.com/rockandscissor/osid) - Base OSID Project originally written in PHP and Bash
 
 
-### 6.1 Significant Changes from Aaron's OSID
+### 6.1 Significant Changes from OSID version
 * added generic install.sh with duplicator specific install.cfg
 * simplify directions
 * migrate from CherryPy to Django
