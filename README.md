@@ -89,10 +89,10 @@ When refreshing the newt web page (or accessing it), newt will scan for availabl
 * added generic install.sh with duplicator specific install.cfg
 * simplify directions
 * migrate from CherryPy to Django
-  * Django: ★s 60.086, Flask: ★s 56,845, CherryPy: ★s 1,458; source PyPi 10OCT2021
+  * Statistics: Django: ★s 60.086, Flask: ★s 56,845, CherryPy: ★s 1,458; source PyPi 10OCT2021
   * If I get stuck on some aspectof using a framework, then I want a lot of resources. So, the more people using, then the more likely I am to find the ssolution to the problem I am facing
 * migrate from skeleton to uikit
-  * [skeleton](https://github.com/dhg/Skeleton): ★s 18.4k, [uikit](https://github.com/uikit/uikit) ★s 17.1k [pure](https://github.com/pure-css/pure/)★s 21.9k; source GitHub 10OCT2021
+  * Statistics: [skeleton](https://github.com/dhg/Skeleton): ★s 18.4k, [uikit](https://github.com/uikit/uikit) ★s 17.1k [pure](https://github.com/pure-css/pure/)★s 21.9k; source GitHub 10OCT2021
   * Using an obfuscated skeleton is not really an oiption; migration or update is required
   * I want a minimal css that is upto date, responsive and easy to use. As an dded benefit, uikit is also used to develop iPhone apps
 * To Dos:
