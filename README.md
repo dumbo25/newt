@@ -1,17 +1,17 @@
 # Newt (MicroSD Card Duplicator)
 Newt clones multiple MicroSD cards from one .img file.
 
-## 1. Required Operating System
+## A. Required Operating System
 Latest version of Raspberry Pi OS
 
-## 2. Required Hardware
+## B. Required Hardware
 * 8GB Raspberry Pi 4 with Case connected to Power Adapter
 * 64GB Class 10, Ultra MicroSD Card with Raspberry Pi OS inserted into the Raspberry Pi's MicroSD Card slot
 * Powered USB 3.0 hub (10 ports) with power cord and USB cable connected to Raspberry Pi
 * MicroSD card USB 3.0 readers (10 total) inserted into USB Hub
 * 1-10 16GB or 32GB Class 10, Ultra MicroSD cards inserted into USB readers
 
-## 3. Installation 
+## C. Installation 
 Newt runs headless on a Raspberry Pi 4 using Raspberry Pi OS on a home LAN.
 
 These directions assume a [Raspberry Pi is properly setup](https://sites.google.com/site/cartwrightraspberrypiprojects/home/steps/setup-raspberry-pi-3-with-raspbian) and running Raspberry Pi OS and the goal is to run the MicroSD Card duplicator as a networked device on a home LAN.
@@ -38,7 +38,7 @@ echo "ServerName 127.0.0.1" | sudo tee -a /etc/apache2/apache2.conf
 * Step 6. Open a browser and enter hostname.local
 
 
-## 4. Get an image
+## D. Get an image
 Newt requires at least one mage. 
 
 * Download image from here to your laptop https://www.raspberrypi.com/software/operating-systems/
@@ -59,7 +59,7 @@ unzip scp 2021-05-07-raspios-buster-armhf-lite.zip
 cp 2021-05-07-raspios-buster-armhf-lite.img newt/clone/.
 ```
 
-## 5. Using newt
+## E. Using newt
 A Raspberry Pi (RPi) runs the newt webserver. A user opens a browser and connects to the RPi's webserver 
 ```
 http://♣your-hostname♣. 
@@ -67,19 +67,25 @@ http://♣your-hostname♣.
 Newt clones one image to 1-10 MicroSD cards. I believe the number of MicroSD Cards can be increased by adding more USB Hubs, but I have not tested this.
 
 
-### 5.1 Accepted image file
+### E.1 Accepted image file
 Newt will accept any image file ending with .img name. Other extensions will silently be ignored.
 
-### 5.2 Auto discovery of available readers
+### E.2 Auto discovery of available readers
 When refreshing the newt web page (or accessing it), newt will scan for available readers, and after some seconds, will show them on the menu. A sum of all readers is also shown.
 
 
-## 6. Original Authors
+## F. Original Authors
 * [aaronnguyen/OSID](https://github.com/aaronnguyen/osid-python3) - python3 version of OSID Project
 * [rockandscissor/OSID](https://github.com/rockandscissor/osid) - Base OSID Project originally written in PHP and Bash
 
+## G. Software Overview
+* Django is a web framework that needs a webserver to operate. 
+* Unlike most lightweight webservers, Apache2 is a secure webserver. 
+* Most webservers cannot communicate with python applications. So, WSGI or ASGI is need to communicate between python applications and the web server.
+  * WSGI only allows synchronous communication
+  * ASGI allows asynchronous communication
 
-### 6.1 Significant Changes from OSID version
+### G.1 Significant Changes from OSID version
 * added generic install.sh with duplicator specific install.cfg
 * simplify directions
 * migrate from CherryPy to Django
@@ -96,12 +102,19 @@ When refreshing the newt web page (or accessing it), newt will scan for availabl
   * get mylog to write to same directory (not newt/server, but newt/log) or at best same file as server.py (access.log)
   * add an image of what the app looks like to this readme.md
 
-### 6.2 Dependencies
-* [CherryPy](http://docs.cherrypy.org/en/latest/) - API Library for Python used to manage all actions
-* [Skeleton-Framework](https://github.com/skeleton-framework/skeleton-framework) - CSS framework used to structure Web UI
+### G.2 Dependencies
+* [Django](https://www.djangoproject.com/) - django web framework
+* [apache2](https://httpd.apache.org/) - webserver
+* [uikit](https://github.com/uikit/uikit) - css 
+* [Raspberry Pi OS](https://www.raspberrypi.org/) - Raspberry Pi Operating system
+* [sqlite3](https://www.sqlite.org/index.html) - lightweight SQL database
+* [mod_wsgi](https://pypi.org/project/mod-wsgi/) - wsgi 
+* Things to remove:
+  * [CherryPy](http://docs.cherrypy.org/en/latest/) - API Library for Python used to manage all actions
+  * [Skeleton-Framework](https://github.com/skeleton-framework/skeleton-framework) - CSS framework used to structure Web UI
+  * dcfldd ???
 
-
-### 6.3 References
+## H. References
 * [nettings/tarot](https://github.com/nettings/tarot) - very cool improvements, changed from python to php and js
 * [Raspberry Tips](https://raspberrytips.com/create-image-sd-card/) How to Create an Image of a Raspberry Pi SD Card?
 * [RaspberryPi.org](https://www.raspberrypi.org/documentation/computers/getting-started.html#using-raspberry-pi-imager) Using Raspberry Pi Imager
@@ -110,11 +123,10 @@ When refreshing the newt web page (or accessing it), newt will scan for availabl
 * [Igoro Oseledko](https://www.igoroseledko.com/backup-options-for-raspberry-pi/) Backup Options for Raspberry Pi
 * [tyrower/diy-duplicator](https://github.com/tyrower/diy-duplicator) Micro SD duplicator using mdadm (RAID disk utilities) written in bash
 
-## 7. Versioning
+## I. Versioning
 [SemVer](http://semver.org/) is used for version numbers. For the versions available, see the [tags on this repository](https://github.com/your/project/tags).
 
 Version needs to be changed in index.html, monitor.html.
 
-
-## 8. License
+## J. License
 This project is licensed under the GNU GPLv3 - see the [LICENSE.md](LICENSE.md) file for details
