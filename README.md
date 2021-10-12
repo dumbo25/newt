@@ -104,6 +104,7 @@ When refreshing the newt web page (or accessing it), newt will scan for availabl
 
 ### G.2 Dependencies
 * [Django](https://www.djangoproject.com/) - django web framework
+  * [Deploy Django](https://docs.djangoproject.com/en/3.2/howto/deployment/)
 * [apache2](https://httpd.apache.org/) - webserver
 * [uikit](https://github.com/uikit/uikit) - css 
 * [Raspberry Pi OS](https://www.raspberrypi.org/) - Raspberry Pi Operating system
