@@ -83,7 +83,7 @@ When refreshing the newt web page (or accessing it), newt will scan for availabl
 * Unlike most lightweight webservers, Apache2 is a secure webserver. 
 * Most webservers cannot communicate with python applications. So, WSGI or ASGI is needed to communicate between python applications and the web server.
   * WSGI only allows synchronous communication
-  * ASGI allows asynchronous communication
+  * ASGI allows asynchronous communication (daphne, uvicorn, hypercorn)
 
 ### G.1 Significant Changes from OSID version
 * added generic install.sh with duplicator specific install.cfg
