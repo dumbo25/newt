@@ -109,7 +109,7 @@ When refreshing the newt web page (or accessing it), newt will scan for availabl
 * [Raspberry Pi OS](https://www.raspberrypi.org/) - Raspberry Pi Operating system
 * [sqlite3](https://www.sqlite.org/index.html) - lightweight SQL database
 * [mod_wsgi](https://pypi.org/project/mod-wsgi/) - wsgi 
-  * ASGI allows asynchronous communication (daphne, uvicorn, hypercorn)
+  * Not used: ASGI allows asynchronous communication (daphne, uvicorn, hypercorn)
 * Things to remove:
   * [CherryPy](http://docs.cherrypy.org/en/latest/) - API Library for Python used to manage all actions
   * [Skeleton-Framework](https://github.com/skeleton-framework/skeleton-framework) - CSS framework used to structure Web UI
