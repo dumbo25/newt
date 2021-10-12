@@ -81,7 +81,7 @@ When refreshing the newt web page (or accessing it), newt will scan for availabl
 ## G. Software Overview
 * Django is a web framework that needs a webserver to operate. 
 * Unlike most lightweight webservers, Apache2 is a secure webserver. 
-* Most webservers cannot communicate with python applications. So, WSGI or ASGI is need to communicate between python applications and the web server.
+* Most webservers cannot communicate with python applications. So, WSGI or ASGI is needed to communicate between python applications and the web server.
   * WSGI only allows synchronous communication
   * ASGI allows asynchronous communication
 
