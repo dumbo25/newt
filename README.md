@@ -16,7 +16,7 @@ Newt runs headless on a Raspberry Pi 4 using Raspberry Pi OS on a home LAN.
 
 These directions assume a [Raspberry Pi is properly setup](https://sites.google.com/site/cartwrightraspberrypiprojects/home/steps/setup-raspberry-pi-3-with-raspbian) and running Raspberry Pi OS and the goal is to run the MicroSD Card duplicator as a networked device on a home LAN.
 
-Be sure to replace items enclosed by ♣s with your value 
+Be sure to replace items enclosed by <sub>♣</sub>s with your value 
 
 install.sh installs all the required software, makes any needed directories and sets any needed permissions. install.sh is a generic installer and relies on install.cfg to set up newt correctly.
 
