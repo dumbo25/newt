@@ -42,10 +42,16 @@ sudo systemctl status apache2.service -l --no-pager
 ```
 * Step 5. On lthe RPi, do the following:
 ```
+cd ~/.
+django-admin startproject newt_site
+sudo python3 manage.py migrate
+```
+then either this
+```
 cd /home/pi/newt_site
 sudo python3 manage.py runserver
 ```
-or
+or this
 ```
 cd /home/pi/newt
 sudo python3 server.py
