@@ -40,7 +40,16 @@ echo "ServerName ♣your-ip-address♣" | sudo tee -a /etc/apache2/apache2.conf
 sudo systemctl restart apache2.service
 sudo systemctl status apache2.service -l --no-pager
 ```
-* Step 5. Change to /home/pi/newt and run: sudo python3 server.py
+* Step 5. On lthe RPi, do the following:
+```
+cd /home/pi/newt_site
+sudo python3 manage.py runserver
+```
+or
+```
+cd /home/pi/newt
+sudo python3 server.py
+```
 * Step 6. Open a browser and enter 
 ```
 http://♣your-hostname♣.local
