@@ -16,6 +16,8 @@ Newt runs headless on a Raspberry Pi 4 using Raspberry Pi OS on a home LAN.
 
 These directions assume a [Raspberry Pi is properly setup](https://sites.google.com/site/cartwrightraspberrypiprojects/home/steps/setup-raspberry-pi-3-with-raspbian) and running Raspberry Pi OS and the goal is to run the MicroSD Card duplicator as a networked device on a home LAN.
 
+Be sure to replace items enclosed by ♣s with your value 
+
 install.sh installs all the required software, makes any needed directories and sets any needed permissions. install.sh is a generic installer and relies on install.cfg to set up newt correctly.
 
 * Step 1. Open a terminal window
@@ -24,22 +26,28 @@ install.sh installs all the required software, makes any needed directories and 
 ssh pi@newt.♣your-hostname♣
 password: ♣your-password♣
 ```
-* Step 3. Download and run newt's install.sh script and configuration file 
+* Step 3. On the RPi, Ddwnload and run newt's install.sh script and configuration file 
 ```
 wget https://raw.githubusercontent.com/dumbo25/newt/master/install.sh
 wget https://raw.githubusercontent.com/dumbo25/newt/master/install.cfg
 sudo bash install.sh
 ```
-* Step 4. Run the following command to add a line to the end of apache2.conf
+* Step 4. On the RPi, run the following commands to add a line to the end of apache2.conf. Restart the service and check that it is correct.
 ```
-echo "ServerName 127.0.0.1" | sudo tee -a /etc/apache2/apache2.conf
+hostname -I
+♣your-ip-address♣
+echo "ServerName ♣your-ip-address♣" | sudo tee -a /etc/apache2/apache2.conf
+sudo systemctl restart apache2.service
+sudo systemctl status apache2.service -l --no-pager
 ```
 * Step 5. Change to /home/pi/newt and run: sudo python3 server.py
-* Step 6. Open a browser and enter hostname.local
-
+* Step 6. Open a browser and enter 
+```
+http://♣your-hostname♣.local
+```
 
 ## D. Get an image
-Newt requires at least one mage. 
+Newt requires at least one image. 
 
 * Download image from here to your laptop https://www.raspberrypi.com/software/operating-systems/
 * Open a terminal window on laptop
