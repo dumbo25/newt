@@ -32,7 +32,7 @@ wget https://raw.githubusercontent.com/dumbo25/newt/master/install.sh
 wget https://raw.githubusercontent.com/dumbo25/newt/master/install.cfg
 sudo bash install.sh
 ```
-* Step 4. On the RPi, run the following commands to add a line to the end of apache2.conf. Restart the service and check that it is correct.
+* Step 4. On the RPi, run the following commands to add a line to the end of apache2.conf. Restart the service and check that it is correct. Debian-based dists like Raspberry Pi OS use apache2.conf, other linux dists use httpd.conf. 
 ```
 hostname -I
 ♣your-ip-address♣
