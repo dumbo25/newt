@@ -57,7 +57,7 @@ sudo python3 manage.py runserver
 or this
 ```
 cd /home/pi/newt
-sudo python3 server.py
+sudo python3 server.py cmd
 ```
 * Step 6. Open a browser and enter 
 ```
