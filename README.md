@@ -149,6 +149,7 @@ When refreshing the newt web page (or accessing it), newt will scan for availabl
 * [billw2/rpi-clone](https://github.com/billw2/rpi-clone) RPi clone
 * [Igoro Oseledko](https://www.igoroseledko.com/backup-options-for-raspberry-pi/) Backup Options for Raspberry Pi
 * [tyrower/diy-duplicator](https://github.com/tyrower/diy-duplicator) Micro SD duplicator using mdadm (RAID disk utilities) written in bash
+* [PiMyLifeUp/Install django on Raspberry Pi](https://pimylifeup.com/raspberry-pi-django/)
 
 ## J. Versioning
 [SemVer](http://semver.org/) is used for version numbers. For the versions available, see the [tags on this repository](https://github.com/your/project/tags).
