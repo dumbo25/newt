@@ -18,6 +18,16 @@
 # items.
 #
 # To Do List:
+#   a) add uninstall option
+#   b) add a2enmod wsgi
+#   c) add missing steps to gitClone; perform checks and edits as appropriate
+#        Initialize git
+#        $ git init
+#        Configure git
+#        $ git config --global dumbo25.osid-python3 dumbo25
+#        $ git config --global dumbo25.email "your-email@gmail.com"
+#        $ git config --global core.editor nano
+#
 #   y) add install.sh and install.cfg to github duplicator
 #   z) add install.sh and install.cfg to github template
 #
@@ -152,7 +162,8 @@ function reloadServices {
                 # loop through all the packages
                 for p in "${ReloadServices[@]}"
                 do
-			"$p" reload
+                        echo "    ${Bold}$p${Normal}"
+			sudo systemctl reload "$p"
                 done
         else
                 echo -e "\n  ${Bold}no services to reload in cfg file${Normal}"
@@ -168,7 +179,8 @@ function restartServices {
                 # loop through all the packages
                 for p in "${RestartServices[@]}"
                 do
-                        "$p" restart
+                        echo "    ${Bold}$p${Normal}"
+                        sudo systemctl restart "$p"
                 done
         else
                 echo -e "\n  ${Bold}no services to restart in cfg file${Normal}"
