@@ -88,7 +88,7 @@ cp 2021-05-07-raspios-buster-armhf-lite.img newt/clone/.
 ## F. Using newt
 A Raspberry Pi (RPi) runs the newt webserver. A user opens a browser and connects to the RPi's webserver 
 ```
-http://♣your-hostname♣. 
+http://♣your-hostname♣ 
 ```
 Newt clones one image to 1-10 MicroSD cards. I believe the number of MicroSD Cards can be increased by adding more USB Hubs, but I have not tested this.
 
