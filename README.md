@@ -150,6 +150,9 @@ When refreshing the newt web page (or accessing it), newt will scan for availabl
 * [Igoro Oseledko](https://www.igoroseledko.com/backup-options-for-raspberry-pi/) Backup Options for Raspberry Pi
 * [tyrower/diy-duplicator](https://github.com/tyrower/diy-duplicator) Micro SD duplicator using mdadm (RAID disk utilities) written in bash
 * [PiMyLifeUp/Emmet](https://pimylifeup.com/raspberry-pi-django/) Installing Django on your Raspberry Pi
+* [Django Install](https://docs.djangoproject.com/en/3.2/topics/install/) How to install Django
+* [Django wsgi](https://docs.djangoproject.com/en/3.2/howto/deployment/wsgi/modwsgi/) How to use Django with Apache and mod_wsgi
+* [Django Application](https://docs.djangoproject.com/en/3.2/intro/tutorial01/) Writing your first Django app
 
 ## J. Versioning
 [SemVer](http://semver.org/) is used for version numbers. For the versions available, see the [tags on this repository](https://github.com/your/project/tags).
