@@ -153,6 +153,7 @@ When refreshing the newt web page (or accessing it), newt will scan for availabl
 * [Django Install](https://docs.djangoproject.com/en/3.2/topics/install/) How to install Django
 * [Django wsgi](https://docs.djangoproject.com/en/3.2/howto/deployment/wsgi/modwsgi/) How to use Django with Apache and mod_wsgi
 * [Django Application](https://docs.djangoproject.com/en/3.2/intro/tutorial01/) Writing your first Django app
+* [Django Tutorial](https://docs.djangoproject.com/en/3.2/intro/tutorial01/) Tutorial
 
 ## J. Versioning
 [SemVer](http://semver.org/) is used for version numbers. For the versions available, see the [tags on this repository](https://github.com/your/project/tags).
