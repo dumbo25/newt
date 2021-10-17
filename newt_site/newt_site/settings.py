@@ -25,6 +25,8 @@ SECRET_KEY = 'django-insecure-5s#zl66$okzt^3khk++(uh0gsw@*m==)o=_$1#vrsrujn5%nli
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+# make this change for newt project
+# was ALLOWED_HOSTS = []
 ALLOWED_HOSTS = ['newt']
 
 
