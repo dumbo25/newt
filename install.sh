@@ -27,6 +27,7 @@
 #        $ git config --global dumbo25.osid-python3 dumbo25
 #        $ git config --global dumbo25.email "your-email@gmail.com"
 #        $ git config --global core.editor nano
+#   d) add django installation instructions, perhaps as a true/false flag and function
 #
 #   y) add install.sh and install.cfg to github duplicator
 #   z) add install.sh and install.cfg to github template
@@ -216,19 +217,24 @@ function gitFiles {
 # git files from github
 # the directory is extracted from the repository
 function gitClone {
-        echo -e "\n  ${Bold}gitting clone: $GitClone${Normal}"
-	repository=$GitClone
-	# remove ".git"
-	repository=${repository::-4}
-	# return string after last slash
-	directory=${repository##*/}
-        if [ -d "$directory" ]
+        if [ $GitClone == ""]
         then
-                echo "    ${Bold}removing directory: $directory${Normal}"
-		rm -rf "$directory"
+                echo -e "\n  ${Bold}no clones to git${Normal}"
+        else
+                echo -e "\n  ${Bold}gitting clone: $GitClone${Normal}"
+                repository=$GitClone
+                # remove ".git"
+                repository=${repository::-4}
+                # return string after last slash
+                directory=${repository##*/}
+                if [ -d "$directory" ]
+                then
+                        echo "    ${Bold}removing directory: $directory${Normal}"
+                        rm -rf "$directory"
+                fi
+                echo -e "\n  ${Bold}gitting clone: $GitClone${Normal}"
+                git clone "$GitClone"
         fi
-        echo -e "\n  ${Bold}gitting clone: $GitClone${Normal}"
-        git clone "$GitClone"
 }
 
 # Bash doesn't have multidimensional tables. So, this is my hack to pretend it does
@@ -340,6 +346,7 @@ function cleanUp {
 Bold=$(tput bold)
 Normal=$(tput sgr0)
 StartMessageCount=0
+
 # I try not to cd in the script. If I do, then it might be good to have the base
 # directory
 # BaseDirectory=$PWD
