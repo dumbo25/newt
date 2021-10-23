@@ -5,7 +5,7 @@ Newt clones multiple MicroSD cards from one .img file.
 
 <!-- toc -->
 
-- [A. Required Operating System](#a.-required-operating-system)
+- [Require Operating System](#required-operating-system)
 - [B. Required Hardware](#b.-required-hardware)
 - [C. Project](#project)
 - [D. Installation](#installation)
@@ -19,7 +19,7 @@ Newt clones multiple MicroSD cards from one .img file.
 
 <!-- tocstop -->
 
-## A. Required Operating System
+## Required Operating System
 Latest version of Raspberry Pi OS
 
 ## B. Required Hardware
