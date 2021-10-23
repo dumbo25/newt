@@ -5,17 +5,17 @@ Newt clones multiple MicroSD cards from one .img file.
 
 <!-- toc -->
 
-- [Required Operating System](#required-operating-system)
-- [Required Hardware](#required-hardware)
-- [Project](#project)
-- [Installation](#installation)
-- [Get an image](#get-an-image)
-- [Using newt](#using-newt)
-- [Original Authors](#original-authors)
-- [Software Overview](#software-overview)
-- [References](#references)
-- [Versioning](#versioning)
-- [License](#license)
+- [A. Required Operating System](#a.-required-operating-system)
+- [B. Required Hardware](#b.-required-hardware)
+- [C. Project](#project)
+- [D. Installation](#installation)
+- [E. Get an image](#get-an-image)
+- [F. Using newt](#using-newt)
+- [G. Original Authors](#original-authors)
+- [H. Software Overview](#software-overview)
+- [I. References](#references)
+- [J. Versioning](#versioning)
+- [K. License](#license)
 
 <!-- tocstop -->
 
