@@ -1,6 +1,22 @@
 # Newt (MicroSD Card Duplicator)
 Newt clones multiple MicroSD cards from one .img file.
 
+<!-- toc -->
+
+- [Required Operating System](#required-operating-system)
+- [Required Hardware] (#required-hardware)
+- [Project] (#project)
+- [Installation] (#installation)
+- [Get an image] (#get-an-image)
+- [Using newt] (#using-newt)
+- [Original Authors] (#original-authors)
+- [Software Overview] (#software-overview)
+- [References] (#references)
+- [Versioning] (#versioning)
+- [License] (#license)
+
+<!-- tocstop -->
+
 ## A. Required Operating System
 Latest version of Raspberry Pi OS
 
