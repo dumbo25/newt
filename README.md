@@ -5,34 +5,34 @@ Newt clones multiple MicroSD cards from one .img file.
 
 <!-- toc -->
 
-- [Require Operating System](#required-operating-system)
-- [B. Required Hardware](#b.-required-hardware)
-- [C. Project](#project)
-- [D. Installation](#installation)
-- [E. Get an image](#get-an-image)
-- [F. Using newt](#using-newt)
-- [G. Original Authors](#original-authors)
-- [H. Software Overview](#software-overview)
-- [I. References](#references)
-- [J. Versioning](#versioning)
-- [K. License](#license)
+- [Required Operating System](#required-operating-system)
+- [Required Hardware](#required-hardware)
+- [Project](#project)
+- [Installation](#installation)
+- [Get an image](#get-an-image)
+- [Using newt](#using-newt)
+- [Original Authors](#original-authors)
+- [Software Overview](#software-overview)
+- [References](#references)
+- [Versioning](#versioning)
+- [License](#license)
 
 <!-- tocstop -->
 
 ## Required Operating System
 Latest version of Raspberry Pi OS
 
-## B. Required Hardware
+## Required Hardware
 * 8GB Raspberry Pi 4 with Case connected to Power Adapter
 * 64GB Class 10, Ultra MicroSD Card with Raspberry Pi OS inserted into the Raspberry Pi's MicroSD Card slot
 * Powered USB 3.0 hub (10 ports) with power cord and USB cable connected to Raspberry Pi
 * MicroSD card USB 3.0 readers (10 total) inserted into USB Hub
 * 1-10 16GB or 32GB Class 10, Ultra MicroSD cards inserted into USB readers
 
-## C. Project
+## Project
 * [Detailed project instructions])https://sites.google.com/site/cartwrightraspberrypiprojects/microsd-card-duplicator)
 
-## D. Installation 
+## Installation 
 Newt runs headless on a Raspberry Pi 4 using Raspberry Pi OS on a home LAN.
 
 These directions assume a [Raspberry Pi is properly setup](https://sites.google.com/site/cartwrightraspberrypiprojects/home/steps/setup-raspberry-pi-3-with-raspbian) and running Raspberry Pi OS and the goal is to run the MicroSD Card duplicator as a networked device on a home LAN.
@@ -82,7 +82,7 @@ sudo python3 server.py cmd
 http://♣your-hostname♣.local
 ```
 
-## E. Get an image
+## Get an image
 Newt requires at least one image. 
 
 * Download image from here to your laptop https://www.raspberrypi.com/software/operating-systems/
@@ -103,7 +103,7 @@ unzip scp 2021-05-07-raspios-buster-armhf-lite.zip
 cp 2021-05-07-raspios-buster-armhf-lite.img newt/clone/.
 ```
 
-## F. Using newt
+## Using newt
 A Raspberry Pi (RPi) runs the newt webserver. A user opens a browser and connects to the RPi's webserver 
 ```
 http://♣your-hostname♣ 
@@ -111,24 +111,24 @@ http://♣your-hostname♣
 Newt clones one image to 1-10 MicroSD cards. I believe the number of MicroSD Cards can be increased by adding more USB Hubs, but I have not tested this.
 
 
-### F.1 Accepted image file
+### Accepted image file
 Newt will accept any image file ending with .img name. Other extensions will silently be ignored.
 
-### F.2 Auto discovery of available readers
+### Auto discovery of available readers
 When refreshing the newt web page (or accessing it), newt will scan for available readers, and after some seconds, will show them on the menu. A sum of all readers is also shown.
 
 
-## G. Original Authors
+## Original Authors
 * [aaronnguyen/OSID](https://github.com/aaronnguyen/osid-python3) - python3 version of OSID Project
 * [rockandscissor/OSID](https://github.com/rockandscissor/osid) - Base OSID Project originally written in PHP and Bash
 
-## H. Software Overview
+## Software Overview
 * Django is a web framework that needs a webserver to operate. 
 * Unlike most lightweight webservers, Apache2 is a secure webserver. 
 * Most webservers cannot communicate with python applications. So, WSGI or ASGI is needed to communicate between python applications and the web server.
   * WSGI only allows synchronous communication
 
-### H.1 Significant Changes from OSID version
+### Significant Changes from OSID version
 * added generic install.sh with duplicator specific install.cfg
 * simplify directions
 * migrate from CherryPy to Django
@@ -145,7 +145,7 @@ When refreshing the newt web page (or accessing it), newt will scan for availabl
   * get mylog to write to same directory (not newt/server, but newt/log) or at best same file as server.py (access.log)
   * add an image of what the app looks like to this readme.md
 
-### H.2 Dependencies
+### Dependencies
 * [Django](https://www.djangoproject.com/) - django web framework
   * [Deploy Django](https://docs.djangoproject.com/en/3.2/howto/deployment/)
 * [apache2](https://httpd.apache.org/) - webserver
@@ -159,7 +159,7 @@ When refreshing the newt web page (or accessing it), newt will scan for availabl
   * [Skeleton-Framework](https://github.com/skeleton-framework/skeleton-framework) - CSS framework used to structure Web UI
   * dcfldd ???
 
-## I. References
+## References
 * [nettings/tarot](https://github.com/nettings/tarot) - very cool improvements, changed from python to php and js
 * [Raspberry Tips](https://raspberrytips.com/create-image-sd-card/) How to Create an Image of a Raspberry Pi SD Card?
 * [RaspberryPi.org](https://www.raspberrypi.org/documentation/computers/getting-started.html#using-raspberry-pi-imager) Using Raspberry Pi Imager
@@ -172,10 +172,10 @@ When refreshing the newt web page (or accessing it), newt will scan for availabl
 * [Django wsgi](https://docs.djangoproject.com/en/3.2/howto/deployment/wsgi/modwsgi/) How to use Django with Apache and mod_wsgi
 * [Django Application](https://docs.djangoproject.com/en/3.2/intro/tutorial01/) Writing your first Django app
 
-## J. Versioning
+## Versioning
 [SemVer](http://semver.org/) is used for version numbers. For the versions available, see the [tags on this repository](https://github.com/your/project/tags).
 
 Version needs to be changed in index.html, monitor.html.
 
-## K. License
+## License
 This project is licensed under the GNU GPLv3 - see the [LICENSE.md](LICENSE.md) file for details
