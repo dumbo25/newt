@@ -1,6 +1,8 @@
 # Newt (MicroSD Card Duplicator)
 Newt clones multiple MicroSD cards from one .img file.
 
+**Table of contents:**
+
 <!-- toc -->
 
 - [Required Operating System](#required-operating-system)
