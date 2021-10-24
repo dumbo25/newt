@@ -52,7 +52,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'newt_site.urls'
+ROOT_URLCONF = 'TestProject.urls'
 
 TEMPLATES = [
     {
