@@ -52,7 +52,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'TestProject.urls'
+# ROOT_URLCONF = 'TestProject.urls'
 
 TEMPLATES = [
     {
@@ -70,7 +70,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'newt_site.wsgi.application'
+# WSGI_APPLICATION = 'newt_site.wsgi.application'
 
 
 # Database
