@@ -27,7 +27,7 @@ DEBUG = True
 
 # make this change for newt project
 # was ALLOWED_HOSTS = []
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['newt']
 
 
 # Application definition
