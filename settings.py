@@ -27,7 +27,7 @@ DEBUG = True
 
 # make this change for newt project
 # was ALLOWED_HOSTS = []
-ALLOWED_HOSTS = ['newt']
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'p_TestProject',
+    'TestProject',
 ]
 
 MIDDLEWARE = [
