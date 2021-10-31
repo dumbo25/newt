@@ -82,6 +82,9 @@ sudo python3 server.py cmd
 http://♣your-hostname♣.local
 ```
 
+## django.sh
+django.sh setups a project directory, a virtual env and django on a raspberry running headless. So, the website is visible from a laptop on the same LAN. django.cfg contains the configuration for the script.
+
 ## Get an image
 Newt requires at least one image. 
 
