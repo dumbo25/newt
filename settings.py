@@ -128,9 +128,10 @@ STATIC_URL = '/static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# STATIC_ROOT = os.path.join( BASE_DIR, "static/")
-# STATIC_ROOT = BASE_DIR / 'static'
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+# In 3.1 and above, Django deprecated os in faor of pathlib. So, don't use 'os.'
+#   STATIC_ROOT = os.path.join( BASE_DIR, "static/")
+#   STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_ROOT = BASE_DIR / 'static'
 STATIC_URL = '/static/'
 
 
